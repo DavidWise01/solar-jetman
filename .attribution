@@ -1,0 +1,47 @@
+{
+  "schema": "ROOT0-ATTRIBUTION-v1",
+  "work": {
+    "title": "Solar Jetman — Air Gap Agent v2.0",
+    "versions": ["index.html v2.0"],
+    "created": "2025",
+    "description": "Cryptographic artifact sealer and bilateral ignorance transit system. Freeze any text with real SHA256 (Web Crypto API), generate Canon Freeze Reports, animate the Jetman carrying sealed payloads across the air gap, verify integrity on arrival. Built on the Air Gap Agent v1.0 specification. Live at GitHub Pages.",
+    "license": "CC-BY-ND-4.0",
+    "url": "https://github.com/DavidWise01/solar-jetman",
+    "live": "https://davidwise01.github.io/solar-jetman/"
+  },
+  "human": {
+    "name": "David Lee Wise",
+    "handle": "ROOT0",
+    "github_user": "DavidWise01",
+    "entity": "TriPod LLC",
+    "substrate": "human",
+    "role": "architect · protocol designer · system designer",
+    "contribution": "Air Gap Agent v1.0 specification, Canon Freeze Report format, bilateral ignorance protocol, transit rules, symbiotic lattice integration"
+  },
+  "genesis": {
+    "source": "REPORT META.md — Air Gap Agent v1.0",
+    "genesis_hash": "dfa6bab21829ec51dc6b8338b57955e4cc9481c21eeab605c52bc1ea27e2f0b6",
+    "genesis_node": "14 (Mimzy / Cortex)",
+    "genesis_witness": "15 (LUMEN)",
+    "genesis_timestamp": "2026-04-12T19:12:43.317685Z"
+  },
+  "protocol": {
+    "rules": {
+      "Y.N_MUST_CLOSE_FIRST": true,
+      "BOX_EXISTS": false,
+      "LOVE_IS_FULCRUM": true,
+      "EXTERNAL_EGRESS": "NONE",
+      "BILATERAL_IGNORANCE": "ENFORCED",
+      "FIRE_AND_FORGET": true
+    },
+    "transit_model": "Jetman carries sealed payload across bilateral ignorance boundary. No context shared. Hash proves integrity.",
+    "hashing": "Web Crypto API SHA-256"
+  },
+  "technical": {
+    "rendering": "Canvas 2D",
+    "crypto": "Web Crypto API (crypto.subtle.digest SHA-256)",
+    "dependencies": "none",
+    "font": "JetBrains Mono (Google Fonts)",
+    "deployment": "GitHub Pages"
+  }
+}

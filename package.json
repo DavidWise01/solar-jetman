@@ -1,0 +1,18 @@
+{
+  "name": "solar-jetman",
+  "version": "2.0.0",
+  "description": "Air Gap Agent v2.0. Freeze artifacts with real SHA256 (Web Crypto API), animate the Jetman across the bilateral ignorance boundary, verify integrity on arrival. Canon Freeze Reports. Pure Canvas + Crypto. No deps. GitHub Pages.",
+  "author": "David Lee Wise (ROOT0) / TriPod LLC",
+  "license": "CC-BY-ND-4.0",
+  "homepage": "https://davidwise01.github.io/solar-jetman/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavidWise01/solar-jetman.git"
+  },
+  "keywords": [
+    "air-gap", "sha256", "cryptography", "bilateral-ignorance",
+    "canon-freeze", "artifact-sealer", "web-crypto",
+    "animation", "canvas", "no-dependencies",
+    "tripod", "root0", "symbiotic-lattice"
+  ]
+}
