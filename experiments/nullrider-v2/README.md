@@ -14,6 +14,7 @@ Requires Node 20+. No dependencies or cloud secrets.
 
 ```sh
 cd experiments/nullrider-v2
+npm run demo        # one command: generates dev keys, launches both processes, lands the Moon rider
 npm run keys        # once; creates .local/{sender,receiver}/{private,public}.pem
 npm test            # node:test positive/negative tests
 npm run receiver    # terminal A: persistent local destination on 127.0.0.1:8787
