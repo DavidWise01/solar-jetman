@@ -1,6 +1,6 @@
 {
   "name":"nullrider-v2-prototype", "version":"2.0.0", "private":true, "type":"module",
   "description":"Prototype signed cross-process NULLRIDER handoff; metadata-only fixture",
-  "scripts":{"keys":"node keys.mjs","receiver":"node receiver.mjs","send":"node sender.mjs","test":"node --test test.mjs"},
+  "scripts":{"keys":"node keys.mjs","receiver":"node receiver.mjs","send":"node sender.mjs","test":"node --test test.mjs","demo":"node demo.mjs"},
   "engines":{"node":">=20"}
 }
