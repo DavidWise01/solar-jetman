@@ -1,0 +1,13 @@
+head_0_based,softmax_top_token_as_reported,softmax_top_weight_as_reported,cross_top_token_as_reported,cross_top_weight_as_reported,top_token_agrees,cross_minus_softmax_top_weight
+0,sat,0.19,sat,0.25,True,0.06
+1,tired,0.99,tired,1.0,True,0.01
+2,The,0.27,The,0.25,True,-0.02
+3,tired,1.0,tired,1.0,True,0.0
+4,tired,0.64,tired,0.93,True,0.29
+5,tired,1.0,tired,1.0,True,0.0
+6,The,0.16,The,0.17,True,0.01
+7,was,0.33,was,0.44,True,0.11
+8,The,0.32,The,0.33,True,0.01
+9,The,0.38,The,0.54,True,0.16
+10,tired,0.42,tired,0.62,True,0.2
+11,The,0.38,The,0.51,True,0.13
