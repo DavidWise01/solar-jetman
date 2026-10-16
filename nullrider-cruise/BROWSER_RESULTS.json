@@ -1,0 +1,174 @@
+{
+  "passed": 42,
+  "total": 42,
+  "checks": [
+    {
+      "name": "desktop title",
+      "ok": true
+    },
+    {
+      "name": "desktop zero pinned",
+      "ok": true
+    },
+    {
+      "name": "desktop shell31 +",
+      "ok": true
+    },
+    {
+      "name": "desktop shell31 -",
+      "ok": true
+    },
+    {
+      "name": "desktop 8 lanes",
+      "ok": true
+    },
+    {
+      "name": "desktop past tach",
+      "ok": true
+    },
+    {
+      "name": "desktop future posi",
+      "ok": true
+    },
+    {
+      "name": "desktop present gyro",
+      "ok": true
+    },
+    {
+      "name": "desktop shell max allowed",
+      "ok": true
+    },
+    {
+      "name": "desktop head11",
+      "ok": true
+    },
+    {
+      "name": "desktop 3x",
+      "ok": true
+    },
+    {
+      "name": "desktop bytes",
+      "ok": true
+    },
+    {
+      "name": "desktop ACCEPT",
+      "ok": true
+    },
+    {
+      "name": "desktop one seam",
+      "ok": true
+    },
+    {
+      "name": "desktop shell attested",
+      "ok": true
+    },
+    {
+      "name": "desktop head attested",
+      "ok": true
+    },
+    {
+      "name": "desktop original SHA",
+      "ok": true
+    },
+    {
+      "name": "desktop fault REJECT",
+      "ok": true
+    },
+    {
+      "name": "desktop zero crossing on fault",
+      "ok": true
+    },
+    {
+      "name": "desktop reset",
+      "ok": true
+    },
+    {
+      "name": "desktop no page JS errors",
+      "ok": true
+    },
+    {
+      "name": "mobile title",
+      "ok": true
+    },
+    {
+      "name": "mobile zero pinned",
+      "ok": true
+    },
+    {
+      "name": "mobile shell31 +",
+      "ok": true
+    },
+    {
+      "name": "mobile shell31 -",
+      "ok": true
+    },
+    {
+      "name": "mobile 8 lanes",
+      "ok": true
+    },
+    {
+      "name": "mobile past tach",
+      "ok": true
+    },
+    {
+      "name": "mobile future posi",
+      "ok": true
+    },
+    {
+      "name": "mobile present gyro",
+      "ok": true
+    },
+    {
+      "name": "mobile shell max allowed",
+      "ok": true
+    },
+    {
+      "name": "mobile head11",
+      "ok": true
+    },
+    {
+      "name": "mobile 3x",
+      "ok": true
+    },
+    {
+      "name": "mobile bytes",
+      "ok": true
+    },
+    {
+      "name": "mobile ACCEPT",
+      "ok": true
+    },
+    {
+      "name": "mobile one seam",
+      "ok": true
+    },
+    {
+      "name": "mobile shell attested",
+      "ok": true
+    },
+    {
+      "name": "mobile head attested",
+      "ok": true
+    },
+    {
+      "name": "mobile original SHA",
+      "ok": true
+    },
+    {
+      "name": "mobile fault REJECT",
+      "ok": true
+    },
+    {
+      "name": "mobile zero crossing on fault",
+      "ok": true
+    },
+    {
+      "name": "mobile reset",
+      "ok": true
+    },
+    {
+      "name": "mobile no page JS errors",
+      "ok": true
+    }
+  ]
+}
