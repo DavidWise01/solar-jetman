@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SEEDED CROSS / 16,356 — 3D Volume</title>
+<meta name="description" content="An interactive 16,356-cell, 12-head derived 3D volume. Solar A/B reversible 180-degree preservation.">
+<style>
+:root{--bg:#050910;--panel:#0d1420;--panel2:#101e2a;--line:#243646;--ink:#e3f8f3;--sub:#8eaaa9;--mint:#55f8b2;--cyan:#62dae7;--orange:#ffbf71;--red:#ff6f79;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink)}body{font-family:var(--mono);background:radial-gradient(circle at 49% 18%,#0e2730 0%,#070f17 33%,#050910 68%)}a{color:var(--cyan)}button,select{font:inherit;color:var(--ink)}button{cursor:pointer}button:focus-visible,select:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+.page{max-width:1580px;margin:0 auto;padding:22px 24px 40px}.top{display:flex;align-items:center;justify-content:space-between;gap:24px}.eyebrow{font-size:10px;letter-spacing:.24em;color:var(--mint)}h1{font-size:clamp(25px,3.8vw,46px);line-height:1.06;letter-spacing:-.045em;margin:8px 0 12px;font-weight:740}h1 span{color:var(--mint)}.subtitle{font-size:12px;line-height:1.65;color:var(--sub);max-width:80ch;margin:0}.link{font-size:10px;text-decoration:none;border:1px solid #2c4956;border-radius:99px;padding:9px 13px;white-space:nowrap}.link:hover{border-color:var(--mint)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0 16px}.stat{border:1px solid var(--line);background:#0b1721b3;border-radius:9px;padding:13px 15px}.stat small{color:var(--sub);font-size:9px;letter-spacing:.10em;text-transform:uppercase}.stat strong{display:block;font-size:clamp(19px,2.4vw,30px);letter-spacing:-.05em;margin-top:5px}.stat em{font-style:normal;color:var(--mint)}.stat .hint{color:var(--sub);font-size:10px}
+.shell{display:grid;grid-template-columns:220px minmax(0,1fr) 244px;gap:12px}.panel{border:1px solid var(--line);border-radius:12px;background:#0b141fbf;overflow:hidden}.panel-title{display:flex;align-items:center;justify-content:space-between;padding:14px 15px 12px;border-bottom:1px solid #1c3440;color:#a1c9c2;font-size:10px;letter-spacing:.15em}.panel-title .dim{font-size:9px;letter-spacing:0;color:var(--sub)}.head-list{padding:8px;display:grid;gap:4px}.head{border:1px solid transparent;background:transparent;display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;border-radius:7px;padding:10px 9px;gap:10px}.head:hover,.head.active{background:#15332f;border-color:#2a7261}.head span{color:var(--mint);font-size:11px}.head small{color:var(--sub);font-size:10px}.head b{font-size:10px;color:#9ec3bf;font-weight:500}.head.active b{color:#f1f9f7}
+.main{position:relative;min-height:605px;background:radial-gradient(ellipse at center,#0b2730 0,#080e17 62%,#060911 100%)}#view3d{position:absolute;inset:0;touch-action:none;cursor:grab}#view3d:active{cursor:grabbing}#view3d canvas{display:block;width:100%;height:100%;touch-action:none}.hud{position:absolute;z-index:2;pointer-events:none}.hud-top{left:20px;top:16px}.big{font-size:11px;letter-spacing:.19em;color:var(--mint)}.mono-sub{color:var(--sub);font-size:10px;margin-top:8px}.hud-bottom{left:20px;bottom:18px;right:20px;display:flex;justify-content:space-between;gap:12px;color:#a8c2bb;font-size:10px}.seam{position:absolute;pointer-events:none;z-index:2;top:13%;bottom:13%;left:50%;border-left:1px dashed #3bceab4f}.seam:after{content:"0";position:absolute;left:-11px;top:50%;width:21px;height:21px;line-height:19px;text-align:center;border-radius:50%;background:#102d2e;border:1px solid #3bceab78;color:var(--mint);font-size:12px}
+.tools{padding:16px 14px}.group{margin-bottom:20px}.label{font-size:10px;letter-spacing:.14em;color:var(--sub);margin-bottom:8px}.group select{display:block;width:100%;appearance:none;background:#11202b;border:1px solid #345363;border-radius:6px;padding:12px;font-size:11px}.seg{display:grid;grid-template-columns:1fr 1fr;gap:5px}.seg button,.action{border-radius:7px;border:1px solid #375260;background:#142632;padding:11px 6px;font-size:10px}.seg button.on{border-color:var(--mint);background:#1c3b36;color:#a5ffd5}.action{width:100%;margin-bottom:7px;text-align:center}.action.primary{background:#173f37;border-color:#35886f;color:var(--mint)}.action.danger{border-color:#713942;color:#ff9fa4}.readout{border-top:1px solid var(--line);padding:13px 15px;min-height:122px;background:#0e1a25}.readout b{display:block;color:var(--mint);font-size:10px;letter-spacing:.09em;margin-bottom:6px}.readout p{color:#a4c2c0;font-size:11px;line-height:1.7;margin:0;overflow-wrap:anywhere}.status{font-size:10px;min-height:55px;padding:10px 12px;border:1px solid #345967;border-radius:6px;color:var(--cyan);line-height:1.65}.status.ok{border-color:#347a60;color:#94f5c8}.status.no{border-color:#904650;color:#ff9aa1}.tag{border:1px solid #315b57;color:#8dbcae;font-size:9px;border-radius:4px;padding:3px 6px}
+.foot{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.info{padding:17px 19px;border:1px solid var(--line);border-radius:10px;background:#0b141db3}.info h2{font-size:12px;letter-spacing:.10em;color:var(--mint);margin:0 0 10px}.info p{font-size:11px;color:#9bb2b3;line-height:1.75;margin:0}.info code{color:#fcd5a3}.copy{margin-top:8px;border:1px solid #3c665c;background:#10342c;color:#c6ffe2;border-radius:5px;font-size:10px;padding:9px 12px}
+@media(max-width:1050px){.shell{grid-template-columns:180px minmax(0,1fr)}.tools-panel{grid-column:1/-1}.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.tools .group{margin:0}.readout{min-height:78px}}
+@media(max-width:680px){.page{padding:15px 12px 28px}.top{display:block}.top .link{display:inline-block;margin-top:16px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{display:flex;flex-direction:column}.main{min-height:420px;order:1}.heads-panel{order:2}.tools-panel{order:3}.head-list{grid-template-columns:repeat(3,minmax(0,1fr))}.head{padding:7px;display:block}.head small{display:block}.head b{display:block;margin-top:3px}.tools{grid-template-columns:1fr 1fr}.foot{grid-template-columns:1fr}.hud-bottom{font-size:9px}.hud-top{left:12px;top:14px}}
+</style></head><body>
+<main class="page">
+<header class="top"><div><div class="eyebrow">K.E.T / NULLRIDER / SEED 16,356 / VOLUME 01</div><h1>THE SEEDED <span>CROSS.</span></h1><p class="subtitle">12 heads × 29 rows × 47 columns. One reversible 3D lattice. Solar A ↔ Solar B at a 180° index half-turn; preservation is checked against every original Float64 cell. Independent point data are <strong>projected</strong> from the provided head summaries, not new model measurements.</p></div><a class="link" href="../seeded-cross-16356/">← PREVIOUS 2D BUILD</a></header>
+<section class="stats" aria-label="Volume metadata"><div class="stat"><small>Logical cells</small><strong>16,356</strong><div class="hint">12 × 29 × 47</div></div><div class="stat"><small>Head layers</small><strong>12 <em>LIVE</em></strong><div class="hint">Derived from supplied table</div></div><div class="stat"><small>Mean entropy · supplied</small><strong>0.62 <em>/</em> 1.07</strong><div class="hint">Cross / softmax</div></div><div class="stat"><small>Top-token agreement · supplied</small><strong>100<em>%</em></strong><div class="hint">Reported for original test</div></div></section>
+<section class="shell">
+<aside class="panel heads-panel"><div class="panel-title">ATTENTION HEADS <span class="dim">0—11</span></div><div class="head-list" id="heads" aria-label="Choose an attention head"><button class="head active" data-head="all"><span>ALL HEADS</span><small>16,356 cells</small></button></div></aside>
+<section class="panel main" aria-label="3D volume visualization"><div id="view3d" aria-label="Rotatable three-dimensional stacked head volume"></div><div class="seam" aria-hidden="true"></div><div class="hud hud-top"><div class="big" id="rendererLabel">3D VOLUME / STARTING</div><div class="mono-sub" id="hudMode">SEED CROSS · SOLAR A · 0°</div></div><div class="hud hud-bottom"><span>DRAG TO ORBIT · SCROLL TO ZOOM · TAP TO INSPECT</span><span id="visible">16,356 / 16,356</span></div></section>
+<aside class="panel tools-panel"><div class="panel-title">COCKPIT <span class="dim">-S+ / MEET AT 0</span></div><div class="tools"><div class="group"><div class="label">FIELD</div><select id="mode"><option value="cross">Seeded Cross</option><option value="softmax">Softmax</option><option value="difference">Cross − Softmax</option></select></div><div class="group"><div class="label">SOLAR ORIENTATION</div><div class="seg"><button id="sideA" class="on" type="button">A / 0°</button><button id="sideB" type="button">B / 180°</button></div></div><div class="group"><div class="label">PRESERVATION GATE</div><button class="action primary" id="verify" type="button">VERIFY AT 0</button><button class="action danger" id="fault" type="button">INJECT ONE-CELL FAULT</button></div><div class="group"><div class="label">VIEW</div><button class="action" id="reset" type="button">RESET CAMERA</button><button class="action" id="spin" type="button">PAUSE ROTATION</button></div><div class="group" style="grid-column:1/-1"><div class="label">SEAM RECEIPT</div><div id="status" class="status" aria-live="polite">Unverified · click VERIFY AT 0.</div></div></div><div class="readout"><b>CELL INSPECTOR</b><p id="inspector">Click or tap a point in the volume to inspect its head, row, column, and projected intensity.</p></div></aside>
+</section>
+<div class="foot"><section class="info"><h2>MEASURED / REPORTED VS DERIVED</h2><p>Values shown in the source file were reported from a DistilGPT2 layer-0 attention experiment. The 12 head top-token weights, entropies, and block drift are kept as supplied. The 16,356 field values are deterministic visualization projections of those summaries. This page does not run or retrain DistilGPT2.</p></section><section class="info"><h2>ZERO-SEAM PRESERVATION</h2><p>The 180° transformation permutes <code>(row,column) ↦ (28−row,46−column)</code> independently inside each head; applying the map twice restores the original Float64 grid exactly. A one-cell mutation forces a REJECT receipt. All receipts are local, unsigned browser records.</p><button class="copy" id="copy" type="button">COPY LAST RECEIPT</button></section></div>
+</main><script>
+// SEEDED CROSS VOLUME v1 — deterministic projection from the 12 values displayed
+// in SEEDED_CROSS_GRID_16356.html. Not measured per-cell attention.
+const GRID = Object.freeze({heads:12,rows:29,cols:47,total:16356});
+const HEADS = Object.freeze([
+ ['sat',0.19,'sat',0.25],['tired',0.99,'tired',1.00],['The',0.27,'The',0.25],['tired',1.00,'tired',1.00],
+ ['tired',0.64,'tired',0.93],['tired',1.00,'tired',1.00],['The',0.16,'The',0.17],['was',0.33,'was',0.44],
+ ['The',0.32,'The',0.33],['The',0.38,'The',0.54],['tired',0.42,'tired',0.62],['The',0.38,'The',0.51]
+]);
+const MEASURED = Object.freeze({sum1:true,finite:true,H_sm:1.067,H_sc:0.618,pattern_agree:1,bloc_sm:0.09,bloc_sc:0.091,drift_mean:0.162});
+const HEAD_SIZE = GRID.rows*GRID.cols;
+const FAULT_INDEX = 5*HEAD_SIZE+14*GRID.cols+23;
+const MODES = new Set(['cross','softmax','difference']);
+function projectCell(h,r,c,mode='cross') {
+ if(!MODES.has(mode))throw Error('unknown mode');
+ if(!Number.isInteger(h)||h<0||h>=GRID.heads||!Number.isInteger(r)||r<0||r>=GRID.rows||!Number.isInteger(c)||c<0||c>=GRID.cols)throw RangeError('coordinate outside grid');
+ const [,sm,,sc] = HEADS[h];
+ // EXACT same deterministic texture as original 2D 16,356-cell page.
+ const x=(c-(GRID.cols-1)/2)/(GRID.cols/2), y=(r-(GRID.rows-1)/2)/(GRID.rows/2);
+ const radial=Math.hypot(x,y),az=Math.atan2(y,x);
+ const envelope=Math.exp(-2.6*radial*radial);
+ const interference=(Math.cos(5*az+1.6*radial+0.31*h)+1)/2;
+ const texture=0.22+0.78*(0.68*envelope+0.32*interference);
+ if(mode==='difference')return (sc-sm)*texture;
+ return (mode==='cross'?sc:sm)*texture;
+}
+function flatGrid(mode='cross') {
+ if(!MODES.has(mode))throw Error('unknown mode');
+ const out=new Float64Array(GRID.total);let i=0;
+ for(let h=0;h<GRID.heads;h++)for(let r=0;r<GRID.rows;r++)for(let c=0;c<GRID.cols;c++)out[i++]=projectCell(h,r,c,mode);
+ return out;
+}
+function rotateHalfTurn(values) {
+ if(values.length!==GRID.total)throw Error('incorrect grid size');
+ const out=new Float64Array(values.length);
+ for(let h=0;h<GRID.heads;h++)for(let r=0;r<GRID.rows;r++)for(let c=0;c<GRID.cols;c++){
+  const src=h*HEAD_SIZE+r*GRID.cols+c;
+  const dst=h*HEAD_SIZE+(GRID.rows-1-r)*GRID.cols+(GRID.cols-1-c);
+  out[dst]=values[src];
+ }
+ return out;
+}
+function coord(index){if(!Number.isInteger(index)||index<0||index>=GRID.total)throw RangeError('index'); const h=Math.floor(index/HEAD_SIZE),v=index%HEAD_SIZE;return {h,r:Math.floor(v/GRID.cols),c:v%GRID.cols};}
+function indexOf(h,r,c){return h*HEAD_SIZE+r*GRID.cols+c;}
+function canonicalIndex(displayIndex,orientation='a'){
+ const {h,r,c}=coord(displayIndex);
+ return orientation==='b'?indexOf(h,GRID.rows-1-r,GRID.cols-1-c):displayIndex;
+}
+function makeState(mode='cross',orientation='a',fault=false){
+ if(!MODES.has(mode)||!['a','b'].includes(orientation))throw Error('invalid state');
+ const logical=flatGrid(mode);
+ const display=orientation==='b'?rotateHalfTurn(logical):Float64Array.from(logical);
+ if(fault)display[FAULT_INDEX]+=0.125;
+ return {mode,orientation,fault,logical,display};
+}
+function verify(state){
+ const restored=state.orientation==='b'?rotateHalfTurn(state.display):Float64Array.from(state.display);
+ let bad=-1;for(let i=0;i<GRID.total;i++)if(!Object.is(restored[i],state.logical[i])){bad=i;break;}
+ return {accepted:bad===-1,badIndex:bad,crossings:bad===-1?1:0,checked:GRID.total,mode:state.mode,orientation:state.orientation,kind:'derived_grid_180_degree_permutation'};
+}
+function coordinates3D(h,r,c){return [(c-23)/46*6.2,(h-5.5)/11*4.2,(r-14)/28*3.35];}
+function colorValue(v,mode){
+ if(mode==='difference'){
+  const t=Math.min(1,Math.abs(v)*2.8);
+  return v>=0?[(12+220*t)/255,(17+145*t)/255,(24+55*t)/255]:[(12+70*t)/255,(24+90*t)/255,(31+220*t)/255];
+ }
+ const t=Math.max(0,Math.min(1,v));
+ return mode==='cross'?[(10+179*t)/255,(20+220*t)/255,(24+98*t)/255]:[(6+25*t)/255,(15+190*t)/255,(22+225*t)/255];
+}
+function makePointBuffers(state,headSelection='all'){
+ const head= headSelection==='all'?-1:Number(headSelection);
+ if(head!==-1&&(!Number.isInteger(head)||head<0||head>=GRID.heads))throw RangeError('head');
+ const count=head===-1?GRID.total:HEAD_SIZE;
+ const positions=new Float32Array(count*3),colors=new Float32Array(count*3),logicalIndices=new Uint32Array(count);
+ let n=0;
+ for(let h=0;h<GRID.heads;h++){
+  if(head!==-1&&h!==head)continue;
+  for(let r=0;r<GRID.rows;r++)for(let c=0;c<GRID.cols;c++){
+   const idx=indexOf(h,r,c),v=state.display[idx];
+   positions.set(coordinates3D(h,r,c),n*3);
+   colors.set(colorValue(v,state.mode),n*3);
+   logicalIndices[n]=idx;n++;
+  }
+ }
+ return {positions,colors,logicalIndices,count};
+}
+
+// Native WebGL points volume with optional Three.js renderer. Both display the same
+// derived buffers. Three.js is CDN-loaded; native WebGL continues offline.
+const THREE_URL='https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
+const VS=`attribute vec3 aPosition;attribute vec3 aColor;uniform mat4 uMvp;uniform float uSize;varying vec3 vColor;void main(){gl_Position=uMvp*vec4(aPosition,1.0);gl_PointSize=uSize;vColor=aColor;}`;
+const FS=`precision mediump float;varying vec3 vColor;void main(){vec2 p=gl_PointCoord-0.5;float d=length(p);if(d>0.48)discard;float a=0.87*(1.0-smoothstep(0.23,0.48,d));gl_FragColor=vec4(vColor,a);}`;
+function matPerspective(fov,aspect,near,far){const f=1/Math.tan(fov/2),nf=1/(near-far);return new Float32Array([f/aspect,0,0,0,0,f,0,0,0,0,(far+near)*nf,-1,0,0,2*far*near*nf,0]);}
+function matLook(eye){const norm=v=>{const m=Math.hypot(...v)||1;return v.map(x=>x/m)},cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];const z=norm(eye),x=norm(cross([0,1,0],z)),y=cross(z,x);return new Float32Array([x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,eye),-dot(y,eye),-dot(z,eye),1]);}
+function mmul(a,b){const o=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++){let sum=0;for(let k=0;k<4;k++)sum+=a[k*4+r]*b[c*4+k];o[c*4+r]=sum;}return o;}
+function shader(gl,type,src){const sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;}
+class VolumeScene {
+ constructor(host,onPick){this.host=host;this.onPick=onPick;this.yaw=0.68;this.pitch=0.40;this.distance=11.9;this.spin=true;this.engine='';this.buffer=null;this.three=null;this.active=null;this.frame=0;this.destroyed=false;this.mouseDown=null;this.installControls();this.nativeInit();this.tick();this.tryThree();}
+ nativeInit(){
+  const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','Native WebGL 3D head volume');this.host.appendChild(canvas);this.nativeCanvas=canvas;
+  let gl;try{gl=canvas.getContext('webgl',{alpha:false,antialias:true,preserveDrawingBuffer:true});}catch{}
+  if(!gl){this.engine='2D canvas fallback';this.fallback=canvas.getContext('2d');this.onRenderer?.(this.engine);return;}
+  try{
+   const program=gl.createProgram();gl.attachShader(program,shader(gl,gl.VERTEX_SHADER,VS));gl.attachShader(program,shader(gl,gl.FRAGMENT_SHADER,FS));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));
+   const pos=gl.getAttribLocation(program,'aPosition'),clr=gl.getAttribLocation(program,'aColor');this.native={gl,program,pos,clr,locMvp:gl.getUniformLocation(program,'uMvp'),locSize:gl.getUniformLocation(program,'uSize'),p:gl.createBuffer(),c:gl.createBuffer()};this.engine='Native WebGL 3D';
+  }catch(e){this.engine='2D canvas fallback';this.native=null;this.fallback=canvas.getContext('2d');}
+  this.onRenderer?.(this.engine);
+ }
+ async tryThree(){
+  // The 3D page works without any network through the native renderer.
+  try{
+   const T=await import(THREE_URL);if(this.destroyed)return;
+   const renderer=new T.WebGLRenderer({alpha:false,antialias:true,powerPreference:'low-power',preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.setClearColor(0x060e17);
+   const scene=new T.Scene();const camera=new T.PerspectiveCamera(45,1,0.1,80);
+   const axisGeometry=new T.BufferGeometry();let ln=[];const hx=3.25,hy=2.3,hz=1.8;
+   const V=[[ -hx,-hy,-hz],[hx,-hy,-hz],[hx,hy,-hz],[-hx,hy,-hz],[-hx,-hy,hz],[hx,-hy,hz],[hx,hy,hz],[-hx,hy,hz]];
+   for(const [a,b]of [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]])ln.push(...V[a],...V[b]);
+   axisGeometry.setAttribute('position',new T.Float32BufferAttribute(ln,3));scene.add(new T.LineSegments(axisGeometry,new T.LineBasicMaterial({color:0x235f63,transparent:true,opacity:.48})));
+   const volume={T,renderer,scene,camera,points:null};this.three=volume;
+   if(this.buffer)this.createThreePoints();
+   this.host.appendChild(renderer.domElement);this.nativeCanvas.style.display='none';this.engine='Three.js WebGL 3D';this.onRenderer?.(this.engine);
+  }catch(e){this.importFailure=String(e?.message||e);}
+ }
+ createThreePoints(){if(!this.three||!this.buffer)return;const {T,scene}=this.three;
+  if(this.three.points){scene.remove(this.three.points);this.three.points.geometry.dispose();this.three.points.material.dispose();}
+  const geo=new T.BufferGeometry();geo.setAttribute('position',new T.BufferAttribute(this.buffer.positions,3));geo.setAttribute('color',new T.BufferAttribute(this.buffer.colors,3));
+  const mat=new T.PointsMaterial({size:0.065,sizeAttenuation:true,vertexColors:true,transparent:true,opacity:0.92,depthWrite:false,blending:T.AdditiveBlending});const points=new T.Points(geo,mat);scene.add(points);this.three.points=points;
+ }
+ setData(state,head){this.buffer=makePointBuffers(state,head);this.state=state;this.head=head;if(this.native){const {gl,p,c}=this.native;gl.bindBuffer(gl.ARRAY_BUFFER,p);gl.bufferData(gl.ARRAY_BUFFER,this.buffer.positions,gl.STATIC_DRAW);gl.bindBuffer(gl.ARRAY_BUFFER,c);gl.bufferData(gl.ARRAY_BUFFER,this.buffer.colors,gl.STATIC_DRAW);}this.createThreePoints();}
+ setView(yaw,pitch,dist){this.yaw=yaw;this.pitch=Math.max(-1.3,Math.min(1.3,pitch));this.distance=Math.max(5.4,Math.min(25,dist));}
+ installControls(){
+  this.host.addEventListener('pointerdown',e=>{if(e.button!==0)return;this.mouseDown={x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,moved:false};this.spin=false;this.host.setPointerCapture(e.pointerId);});
+  this.host.addEventListener('pointermove',e=>{const m=this.mouseDown;if(!m)return;const dx=e.clientX-m.x,dy=e.clientY-m.y;if(Math.hypot(e.clientX-m.startX,e.clientY-m.startY)>5)m.moved=true;this.yaw+=dx*.009;this.pitch=Math.max(-1.3,Math.min(1.3,this.pitch+dy*.009));m.x=e.clientX;m.y=e.clientY;});
+  this.host.addEventListener('pointerup',e=>{const m=this.mouseDown;this.mouseDown=null;if(m&&!m.moved)this.pick(e.clientX,e.clientY);});
+  this.host.addEventListener('pointercancel',()=>this.mouseDown=null);
+  this.host.addEventListener('wheel',e=>{e.preventDefault();this.distance=Math.max(5.4,Math.min(25,this.distance+e.deltaY*.009));},{passive:false});
+ }
+ matrix(w,h){const cp=Math.cos(this.pitch),eye=[this.distance*cp*Math.sin(this.yaw),this.distance*Math.sin(this.pitch),this.distance*cp*Math.cos(this.yaw)];return {eye,mvp:mmul(matPerspective(Math.PI/4,Math.max(1,w)/Math.max(1,h),.1,80),matLook(eye))};}
+ pick(clientX,clientY){if(!this.buffer)return;const rect=this.host.getBoundingClientRect(),x=(clientX-rect.left)/rect.width*2-1,y=1-(clientY-rect.top)/rect.height*2;const {mvp}=this.matrix(rect.width,rect.height);let best=-1,dBest=.040* .040,depBest=Infinity;
+  for(let i=0;i<this.buffer.count;i++){const p=this.buffer.positions,k=3*i,px=p[k],py=p[k+1],pz=p[k+2];const X=mvp[0]*px+mvp[4]*py+mvp[8]*pz+mvp[12],Y=mvp[1]*px+mvp[5]*py+mvp[9]*pz+mvp[13],Z=mvp[2]*px+mvp[6]*py+mvp[10]*pz+mvp[14],W=mvp[3]*px+mvp[7]*py+mvp[11]*pz+mvp[15];if(W<=0)continue;const dx=X/W-x,dy=Y/W-y,d=dx*dx+dy*dy;if(d<dBest||Math.abs(d-dBest)<1e-7&&Z/W<depBest){best=i;dBest=d;depBest=Z/W;}}
+  if(best>=0)this.onPick?.(this.buffer.logicalIndices[best]);
+ }
+ drawNative(w,h,dpr){if(!this.native||!this.buffer)return;const {gl,program,pos,clr,locMvp,locSize,p,c}=this.native;const cv=this.nativeCanvas;if(cv.width!==Math.round(w*dpr)||cv.height!==Math.round(h*dpr)){cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);}gl.viewport(0,0,cv.width,cv.height);gl.clearColor(.018,.037,.063,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.disable(gl.DEPTH_TEST);
+  gl.useProgram(program);gl.uniformMatrix4fv(locMvp,false,this.matrix(w,h).mvp);gl.uniform1f(locSize,3.6*dpr);gl.bindBuffer(gl.ARRAY_BUFFER,p);gl.vertexAttribPointer(pos,3,gl.FLOAT,false,0,0);gl.enableVertexAttribArray(pos);gl.bindBuffer(gl.ARRAY_BUFFER,c);gl.vertexAttribPointer(clr,3,gl.FLOAT,false,0,0);gl.enableVertexAttribArray(clr);gl.drawArrays(gl.POINTS,0,this.buffer.count);
+ }
+ drawFallback(w,h,dpr){const cv=this.nativeCanvas,ctx=this.fallback;if(!ctx||!this.buffer)return;cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle='#06111a';ctx.fillRect(0,0,w,h);const {mvp}=this.matrix(w,h),{positions,colors,count}=this.buffer;for(let i=0;i<count;i++){const j=i*3,[px,py,pz]=positions.slice(j,j+3);const X=mvp[0]*px+mvp[4]*py+mvp[8]*pz+mvp[12],Y=mvp[1]*px+mvp[5]*py+mvp[9]*pz+mvp[13],W=mvp[3]*px+mvp[7]*py+mvp[11]*pz+mvp[15];if(W<=0)continue;const x=(X/W+1)*w/2,y=(1-Y/W)*h/2;ctx.fillStyle=`rgba(${Math.floor(colors[j]*255)},${Math.floor(colors[j+1]*255)},${Math.floor(colors[j+2]*255)},.70)`;ctx.fillRect(x,y,2,2);}}
+ tick(){if(this.destroyed)return;this.frame=requestAnimationFrame(()=>this.tick());if(this.spin)this.yaw+=.0018;const w=this.host.clientWidth,h=this.host.clientHeight;if(w<20||h<20)return;
+  if(this.three){const {renderer,camera,scene}=this.three;renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=45;camera.updateProjectionMatrix();const cp=Math.cos(this.pitch);camera.position.set(this.distance*cp*Math.sin(this.yaw),this.distance*Math.sin(this.pitch),this.distance*cp*Math.cos(this.yaw));camera.lookAt(0,0,0);renderer.render(scene,camera);}
+  else if(this.native)this.drawNative(w,h,Math.min(devicePixelRatio||1,2));else this.drawFallback(w,h,Math.min(devicePixelRatio||1,2));
+ }
+ destroy(){this.destroyed=true;cancelAnimationFrame(this.frame);this.three?.renderer.dispose();}
+}
+
+const $=id=>document.getElementById(id);
+let state=makeState(),head='all',lastReceipt=null;
+const volume=new VolumeScene($('view3d'),showCell);
+volume.onRenderer=(renderer)=>{$('rendererLabel').textContent=renderer.toUpperCase()+' / '+GRID.total.toLocaleString()+' CELLS';};
+const heads=$('heads');
+for(let h=0;h<GRID.heads;h++){
+ const b=document.createElement('button');b.className='head';b.dataset.head=String(h);
+ const id=document.createElement('span');id.textContent=`H${String(h).padStart(2,'0')}`;
+ const count=document.createElement('small');count.textContent=HEADS[h][0];
+ const info=document.createElement('b');info.textContent=HEADS[h][3].toFixed(2);
+ b.append(id,count,info);heads.appendChild(b);
+}
+function status(msg,tone=''){const s=$('status');s.textContent=msg;s.className='status '+tone;}
+function sync(announce=true){
+ state=makeState($('mode').value,state.orientation,state.fault);
+ volume.setData(state,head);
+ $('sideA').classList.toggle('on',state.orientation==='a');$('sideB').classList.toggle('on',state.orientation==='b');
+ $('hudMode').textContent=`${state.mode.toUpperCase()} · SOLAR ${state.orientation.toUpperCase()} · ${state.orientation==='b'?'180°':'0°'}`;
+ $('visible').textContent=`${volume.buffer.count.toLocaleString()} / ${GRID.total.toLocaleString()} points`;
+ $('fault').textContent=state.fault?'CLEAR ONE-CELL FAULT':'INJECT ONE-CELL FAULT';
+ heads.querySelectorAll('[data-head]').forEach(b=>b.classList.toggle('active',b.dataset.head===head));
+ if(announce){lastReceipt=null;status('Unverified · click VERIFY AT 0.');}
+}
+function showCell(displayIndex){const {h,r,c}=coord(displayIndex),idx=canonicalIndex(displayIndex,state.orientation),v=state.display[displayIndex];
+ $('inspector').textContent=`H${String(h).padStart(2,'0')} · row ${r} · col ${c} · point ${displayIndex+1}/${GRID.total} · derived ${state.mode} = ${v.toFixed(6)} · Solar ${state.orientation.toUpperCase()} · original index ${idx+1} · token ${HEADS[h][0]}`;
+}
+heads.addEventListener('click',e=>{const b=e.target.closest('button[data-head]');if(!b)return;head=b.dataset.head;sync(false);});
+$('mode').addEventListener('change',()=>sync());
+$('sideA').addEventListener('click',()=>{state.orientation='a';sync();});
+$('sideB').addEventListener('click',()=>{state.orientation='b';sync();});
+$('fault').addEventListener('click',()=>{state.fault=!state.fault;sync();status(state.fault?'One derived cell changed. Verify to test the gate.':'Cell restored. Verify again.');});
+$('verify').addEventListener('click',()=>{
+ const result=verify(state);
+ lastReceipt={version:'seeded-cross-volume3d-v1',at:new Date().toISOString(),head_view:head,...result,source:'original 12 per-head summaries (16,356 derived visualization cells)',signed:false};
+ if(result.accepted)status(`ACCEPT · ${result.checked.toLocaleString()} original Float64 cells preserved · crossing count ${result.crossings} · Solar ${state.orientation.toUpperCase()}.`,'ok');
+ else status(`REJECT · reconstructed cell ${result.badIndex+1}/${GRID.total} differs · crossing count 0.`,'no');
+});
+$('reset').addEventListener('click',()=>volume.setView(.68,.40,11.9));
+$('spin').addEventListener('click',()=>{volume.spin=!volume.spin;$('spin').textContent=volume.spin?'PAUSE ROTATION':'RESUME ROTATION';});
+$('copy').addEventListener('click',async()=>{
+ if(!lastReceipt){status('No receipt yet. Verify at 0 first.');return;}
+ const raw=JSON.stringify(lastReceipt,null,2);
+ try{await navigator.clipboard.writeText(raw);status('Local receipt copied. Unsigned browser record.','ok');}
+ catch{const t=document.createElement('textarea');t.value=raw;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();status('Receipt copied via fallback. Unsigned browser record.','ok');}
+});
+// Lightweight introspection for browser automation, not a security interface.
+window.SEEDED_VOLUME={GRID,MEASURED,get state(){return state;},get head(){return head;},get renderer(){return volume.engine;},get visible(){return volume.buffer?.count||0;},get receipt(){return lastReceipt;},get camera(){return {yaw:volume.yaw,pitch:volume.pitch,distance:volume.distance,spin:volume.spin};},verifyNow:()=>verify(state),point:showCell};
+sync();volume.onRenderer(volume.engine);showCell(FAULT_INDEX);
+
+</script></body></html>
