@@ -1,0 +1,196 @@
+{
+  "passed": 38,
+  "total": 38,
+  "checks": [
+    {
+      "view": "desktop",
+      "check": "no JS errors",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "gateway",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "14 Colors",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "8 planets",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "default Mars",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Read only",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Daughters default",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Venus select",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Venus faction",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Fiction does not change flux",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Science mode hides fiction",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Fiction mode hides science",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Both layers restored",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Inverse square distance slider",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Empty resource reservoir",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Phase input updates",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "No core write",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "Canvas SVG eight selectable planets",
+      "pass": true
+    },
+    {
+      "view": "desktop",
+      "check": "No horizontal clipping",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "no JS errors",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "gateway",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "14 Colors",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "8 planets",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "default Mars",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Read only",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Daughters default",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Venus select",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Venus faction",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Fiction does not change flux",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Science mode hides fiction",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Fiction mode hides science",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Both layers restored",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Inverse square distance slider",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Empty resource reservoir",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Phase input updates",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "No core write",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "Canvas SVG eight selectable planets",
+      "pass": true
+    },
+    {
+      "view": "mobile",
+      "check": "No horizontal clipping",
+      "pass": true
+    }
+  ]
+}
