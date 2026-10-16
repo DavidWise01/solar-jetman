@@ -1,0 +1,55 @@
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+import json
+P=Path(__file__).resolve().parent
+html=(P/'index.html').read_text()
+checks=[]
+def check(name, cond):
+    checks.append({'name':name,'pass':bool(cond)})
+    if not cond: print('FAIL',name)
+with sync_playwright() as p:
+    browser=p.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox','--disable-dev-shm-usage'])
+    for label,viewport in [('desktop',{'width':1360,'height':950}),('mobile',{'width':390,'height':844})]:
+        page=browser.new_page(viewport=viewport,device_scale_factor=1)
+        errors=[]
+        page.on('pageerror',lambda e: errors.append(str(e)))
+        page.set_content(html,wait_until='load')
+        page.wait_for_timeout(250)
+        check(label+' no JS exceptions',not errors)
+        check(label+' renders 365 cells',page.locator('.cell').count()==365)
+        check(label+' shows correct symbolic lanes',page.locator('#population').inner_text()=='365/365')
+        check(label+' truth initially hidden',page.locator('#celltruth').inner_text()=='HIDDEN')
+        check(label+' inference initially idle',page.locator('#crossing').inner_text()=='NO INFERENCE')
+        initial=page.evaluate("LAB.syntheticTrial ? trial.core.through184({via:184,op:'VIEW'}).snapshot.fingerprint : null")
+        page.locator('#infer').click()
+        check(label+' inference completes',page.locator('#crossing').inner_text()=='READ-ONLY PASS')
+        check(label+' fingerprint unchanged',page.evaluate("trial.core.through184({via:184,op:'VIEW'}).snapshot.fingerprint") ==initial)
+        check(label+' still hidden truth',page.locator('#celltruth').inner_text()=='HIDDEN')
+        check(label+' alerts visible',page.locator('#alerts').inner_text().isdigit())
+        check(label+' at least some decisive outputs',page.evaluate("result.counts.CLEAR+result.counts.ALERT")>0)
+        check(label+' grid alert markers match result',page.locator('.cell.alert').count()==page.evaluate('result.counts.ALERT'))
+        page.locator('.cell').nth(183).click()
+        check(label+' select cell 184',page.locator('#cellid').inner_text()=='184')
+        page.locator('#reveal').click()
+        check(label+' reveal actual labels',page.locator('#truth').inner_text()=='REVEALED')
+        check(label+' brier score shown',page.locator('#brier').inner_text()!='—')
+        page.locator('#runbench').click()
+        check(label+' holdout benchmark panel',page.locator('#bench').is_visible())
+        check(label+' 14600 cell holdout',page.locator('#benchlabel').inner_text().find('14,600')>=0)
+        check(label+' holdout brier beats baseline',page.evaluate('lastBench.brier < lastBench.priorBrier'))
+        page.locator('#missing').fill('100')
+        page.locator('#new').click()
+        page.locator('#infer').click()
+        check(label+' completely missing => abstain',page.evaluate('result.counts.ABSTAIN===365'))
+        check(label+' missing => no false confidence',page.evaluate('result.rows.every(r=>r.posterior===null)'))
+        check(label+' can reseed without change to population',page.locator('#population').inner_text()=='365/365')
+        check(label+' no overflow document',page.evaluate('document.documentElement.scrollWidth<=innerWidth+2'))
+        page.locator('#missing').fill('25');page.locator('#new').click();page.locator('#infer').click()
+        page.screenshot(path=str(P/f'{label}.png'),full_page=True)
+        check(label+' final JS exceptions',not errors)
+        page.close()
+    browser.close()
+summary={'passed':sum(x['pass'] for x in checks),'total':len(checks),'failed':[x['name'] for x in checks if not x['pass']]}
+(P/'browser_results.json').write_text(json.dumps({'summary':summary,'checks':checks},indent=2)+'\n')
+print(json.dumps(summary,indent=2))
+if summary['failed']: raise SystemExit(1)
