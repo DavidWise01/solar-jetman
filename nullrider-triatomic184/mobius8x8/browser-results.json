@@ -1,0 +1,150 @@
+{
+  "passed": 36,
+  "total": 36,
+  "checks": [
+    {
+      "name": "desktop title",
+      "pass": true
+    },
+    {
+      "name": "desktop A 64",
+      "pass": true
+    },
+    {
+      "name": "desktop B 64",
+      "pass": true
+    },
+    {
+      "name": "desktop canvas A",
+      "pass": true
+    },
+    {
+      "name": "desktop canvas B",
+      "pass": true
+    },
+    {
+      "name": "desktop exact bytes ACCEPT",
+      "pass": true
+    },
+    {
+      "name": "desktop gate receipt 184",
+      "pass": true
+    },
+    {
+      "name": "desktop 360 twist",
+      "pass": true
+    },
+    {
+      "name": "desktop 360 preserved",
+      "pass": true
+    },
+    {
+      "name": "desktop B mapped reversed",
+      "pass": true
+    },
+    {
+      "name": "desktop 720 orientation reset",
+      "pass": true
+    },
+    {
+      "name": "desktop 720 accepted",
+      "pass": true
+    },
+    {
+      "name": "desktop one-byte tamper REJECT",
+      "pass": true
+    },
+    {
+      "name": "desktop restore ACCEPT",
+      "pass": true
+    },
+    {
+      "name": "desktop cargo changed rejected until reseal",
+      "pass": true
+    },
+    {
+      "name": "desktop Unicode reseal",
+      "pass": true
+    },
+    {
+      "name": "desktop reset ready",
+      "pass": true
+    },
+    {
+      "name": "desktop no JS errors",
+      "pass": true
+    },
+    {
+      "name": "mobile title",
+      "pass": true
+    },
+    {
+      "name": "mobile A 64",
+      "pass": true
+    },
+    {
+      "name": "mobile B 64",
+      "pass": true
+    },
+    {
+      "name": "mobile canvas A",
+      "pass": true
+    },
+    {
+      "name": "mobile canvas B",
+      "pass": true
+    },
+    {
+      "name": "mobile exact bytes ACCEPT",
+      "pass": true
+    },
+    {
+      "name": "mobile gate receipt 184",
+      "pass": true
+    },
+    {
+      "name": "mobile 360 twist",
+      "pass": true
+    },
+    {
+      "name": "mobile 360 preserved",
+      "pass": true
+    },
+    {
+      "name": "mobile B mapped reversed",
+      "pass": true
+    },
+    {
+      "name": "mobile 720 orientation reset",
+      "pass": true
+    },
+    {
+      "name": "mobile 720 accepted",
+      "pass": true
+    },
+    {
+      "name": "mobile one-byte tamper REJECT",
+      "pass": true
+    },
+    {
+      "name": "mobile restore ACCEPT",
+      "pass": true
+    },
+    {
+      "name": "mobile cargo changed rejected until reseal",
+      "pass": true
+    },
+    {
+      "name": "mobile Unicode reseal",
+      "pass": true
+    },
+    {
+      "name": "mobile reset ready",
+      "pass": true
+    },
+    {
+      "name": "mobile no JS errors",
+      "pass": true
+    }
+  ]
+}
