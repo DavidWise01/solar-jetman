@@ -1,0 +1,237 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#061016"><title>NULLRIDER · TRIATOMIC / NODE 184</title>
+<style>
+:root{color-scheme:dark;--bg:#061016;--panel:#0c1920;--hair:#1b3741;--text:#d9edf1;--mute:#89aab3;--cyan:#5ad8e1;--amber:#efaf60;--violet:#a7a0ef;--green:#66e3aa;--red:#ed7b7b}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at 50% 5%,#133042 0,#07131b 36%,#050c12 86%);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--text)}
+a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #fff;outline-offset:2px} .app{max-width:1510px;margin:0 auto;padding:20px 26px 44px}
+header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--hair);padding-bottom:15px;gap:16px;flex-wrap:wrap}
+.brand{font-size:21px;letter-spacing:.15em;font-weight:900}.brand em{font-style:normal;color:var(--amber)}.strap{font-size:10px;letter-spacing:.2em;color:var(--mute);margin-top:4px}
+nav{display:flex;gap:20px;font-size:11px;align-items:center;flex-wrap:wrap}.chip{font-size:10px;padding:7px 11px;border:1px solid #3d7268;color:var(--green);border-radius:20px}
+.hero{display:flex;justify-content:space-between;align-items:end;gap:22px;margin:28px 0 18px}.over{font-size:10px;letter-spacing:.24em;color:var(--green)}h1{font-size:clamp(30px,4vw,60px);margin:9px 0 8px;font-weight:800;letter-spacing:-.055em;line-height:1.05}h1 em{font-style:normal;color:var(--amber)}.desc{color:var(--mute);max-width:770px;line-height:1.55;font-size:12px}.formula{white-space:nowrap;color:var(--amber);padding:10px 16px;border:1px solid #574332;border-radius:8px;font-size:17px}
+.stageWrap{position:relative;border:1px solid #2c5360;background:radial-gradient(ellipse at center,#153342,#07151e 69%);border-radius:16px;overflow:hidden;box-shadow:0 22px 70px #01070b80}
+#stage{display:block;width:100%;height:clamp(280px,36vw,450px);touch-action:pan-y;cursor:grab}#stage:active{cursor:grabbing}
+.stageLabels{pointer-events:none;position:absolute;left:16px;right:16px;bottom:14px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;gap:8px}.stageLabels div{background:#071118c7;padding:10px 6px;border:1px solid #2b4a53;border-radius:8px}.stageLabels strong{font-size:14px;letter-spacing:.16em}.stageLabels small{display:block;font-size:9px;color:var(--mute);margin-top:3px}.stageLabels div:nth-child(1) strong{color:var(--amber)}.stageLabels div:nth-child(2) strong{color:var(--green)}.stageLabels div:nth-child(3) strong{color:var(--cyan)}
+.nodeLabel{position:absolute;left:50%;top:16px;transform:translateX(-50%);white-space:nowrap;border:1px solid #876439;background:#281c1399;border-radius:20px;padding:9px 15px;color:#ffce86;font-size:12px;font-weight:800;letter-spacing:.12em}.stageFoot{display:flex;gap:14px;justify-content:space-between;flex-wrap:wrap;font-size:9px;color:var(--mute);margin-top:8px}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:17px 0}button{border:1px solid #3b5c63;color:var(--text);background:#14262e;padding:11px 15px;border-radius:8px;font-size:11px;font-weight:700;transition:background .14s}button:hover{background:#23414e}button.primary{background:linear-gradient(120deg,#edb469,#bd753d);color:#081117;border:none}button.alert{color:#ffd2cb;border-color:#81463e;background:#281a1b}.speed{margin-left:auto;display:flex;align-items:center;gap:8px;color:var(--mute);font-size:10px}input[type=range]{accent-color:var(--green)}
+.metrics{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:0 0 16px}.metric{background:#0b1921;border:1px solid var(--hair);border-radius:10px;padding:13px 14px}.metric span{font-size:9px;color:var(--mute);letter-spacing:.07em;text-transform:uppercase}.metric b{display:block;font-size:24px;margin:9px 0 3px;color:#e9faff;letter-spacing:-.04em}.metric small{color:#6b929c;font-size:9px}
+.grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:15px}.panel{border:1px solid var(--hair);background:#0b1921;border-radius:11px;overflow:hidden}.head{font-size:10px;color:var(--mute);padding:12px 15px;border-bottom:1px solid var(--hair);display:flex;justify-content:space-between;gap:10px}.content{padding:15px}.lane{display:flex;gap:9px;align-items:center;margin-bottom:11px}.laneName{width:96px;font-weight:750;letter-spacing:.07em;font-size:12px}.track{height:14px;flex:1;background:#10242d;border:1px solid #33515a;border-radius:5px;overflow:hidden}.fill{height:100%;width:100%}.counter{font-size:11px;color:var(--mute);min-width:72px;text-align:right}.mini{font-size:11px;line-height:1.7;color:var(--mute);margin:14px 0 0}
+.readout{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}.readout input{background:#061217;border:1px solid #33525b;border-radius:5px;padding:10px;color:#fff;width:95px}.mono{color:var(--green);font-weight:bold}.receipt{font-size:10px;color:#9cc2cb;background:#051017;padding:13px;line-height:1.6;min-height:128px;max-height:200px;overflow:auto;border:1px solid #28434d;border-radius:7px;white-space:pre-wrap;overflow-wrap:anywhere}.statusok{color:var(--green)}.statusbad{color:var(--red)}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{border:1px solid #3b5c66;padding:5px 8px;border-radius:5px;font-size:10px;color:var(--mute)}footer{margin-top:22px;padding-top:13px;border-top:1px solid var(--hair);font-size:10px;color:#7799a0;line-height:1.6}
+@media(max-width:850px){.app{padding:13px 12px 30px}.formula{display:none}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.grid{grid-template-columns:1fr}.speed{margin-left:0}.stageLabels{left:6px;right:6px;bottom:7px}.stageLabels strong{font-size:11px}.stageLabels small{font-size:8px}.hero{margin-top:22px}}
+@media(max-width:470px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}button{padding:11px 9px}.stageLabels div{padding:6px 1px}}
+</style></head><body><div class="app">
+<header><div><div class="brand">NULL<em>RIDER</em></div><div class="strap">TRIATOMIC · NODE 184 / K.E.T. HOMEOSTASIS</div></div><nav><a href="../nullrider-cruise/">CRUISE</a><a href="../dual-solar/">DUAL SOLAR</a><a href="../seeded-cross-volume3d/">16,356 GRID</a><a href="https://github.com/DavidWise01/solar-jetman">SOURCE ↗</a><span class="chip">LOCAL SIMULATION</span></nav></header>
+<section class="hero"><div><div class="over">EXPERIMENT 07 · PRESERVE THE CELL</div><h1>One gate. <em>Three engines.</em></h1><div class="desc">Tach −2 · Gyro 0 · Posi +3. Three 118-address branches, eleven shared reserve slots, one exclusive Node 184 gate. Replace 2% over time. Keep the population full; let the lineage change.</div></div><div class="formula">118 × 3 + 11 = 365</div></section>
+<div class="stageWrap"><div class="nodeLabel">◈ NODE 184 · SINGLE GATE</div><canvas id="stage" aria-label="Animated triatomic maintenance with three circulating branches and central Node 184"></canvas><div class="stageLabels"><div><strong>TACH −2</strong><small>PAST −1 · 118 SLOTS</small></div><div><strong>GYRO 0</strong><small>PRESENT 0 · 118 SLOTS</small></div><div><strong>POSI +3</strong><small>FUTURE +1 · 118 SLOTS</small></div></div></div>
+<div class="stageFoot"><span>184 = gateway address in 208 register, not another cell</span><span>7.5° aperture · 2.0833% angular span ≠ exact 2% renewal</span><span id="runtimeMode">3D PERSPECTIVE / CANVAS</span></div>
+<div class="controls"><button id="one" class="primary">▶ RENEW 1 CYCLE</button><button id="ten">⏩ CRUISE 10 CYCLES</button><button id="ninety">↻ RUN 90</button><button id="fault" class="alert">⚠ FAULT CELL 184</button><button id="reset">⟲ RESEED THROUGH 184</button><button id="pause">Ⅱ PAUSE</button><div class="speed">SPEED <input id="speed" aria-label="Cruise speed" type="range" min="0.2" max="3" step="0.2" value="1"><output id="speedText">1.0×</output></div></div>
+<div class="metrics"><div class="metric"><span>Population</span><b id="occupancy">365/365</b><small>100% occupied</small></div><div class="metric"><span>Current cycle</span><b id="cycle">0</b><small>self-recursive</small></div><div class="metric"><span>Next renewal</span><b id="quota">7</b><small>7.3 average / cycle</small></div><div class="metric"><span>Renewed total</span><b id="renewed">0</b><small>lineage receipts retained</small></div><div class="metric"><span>Faults</span><b id="faults">0</b><small>inspected through gate</small></div><div class="metric"><span>Homeostasis</span><b id="verdict" class="statusok">STABLE</b><small>no pending faults</small></div></div>
+<div class="grid"><article class="panel"><div class="head"><span>01 · TRIATOMIC OCCUPANCY</span><span>THREE BRANCHES + SHARED RESERVE</span></div><div class="content">
+<div class="lane"><span class="laneName" style="color:var(--amber)">TACH −2</span><div class="track"><div class="fill" style="background:linear-gradient(90deg,#c47b41,#f3b46a)"></div></div><span class="counter">118 / 118</span></div>
+<div class="lane"><span class="laneName" style="color:var(--green)">GYRO 0</span><div class="track"><div class="fill" style="background:linear-gradient(90deg,#339e7c,#6de3b5)"></div></div><span class="counter">118 / 118</span></div>
+<div class="lane"><span class="laneName" style="color:var(--cyan)">POSI +3</span><div class="track"><div class="fill" style="background:linear-gradient(90deg,#368ea5,#66e3e4)"></div></div><span class="counter">118 / 118</span></div>
+<div class="lane"><span class="laneName" style="color:var(--violet)">RESERVE</span><div class="track"><div class="fill" style="background:linear-gradient(90deg,#706cc8,#b1aaf6)"></div></div><span class="counter">11 / 11</span></div>
+<p class="mini">Removal and replenishment occur within one gated renewal event. Each selected address keeps its position but gets a fresh cell version. Older versions are recorded in the append-only local event log. Discrete quota = 7 replacements in seven cycles, 8 in three cycles, for an exact 2% average over ten cycles.</p>
+<div class="tags"><span class="tag">TIME −1 / 0 / +1</span><span class="tag">ENGINE −2 / 0 / +3</span><span class="tag">ROLL 5/3/1</span><span class="tag">SCALAR 0</span></div>
+</div></article><article class="panel"><div class="head"><span>02 · NODE 184 TELEMETRY</span><span id="gateStatus" class="statusok">GATE READY</span></div><div class="content">
+<div class="readout"><label for="cellId">INSPECT CELL ADDRESS</label><input type="number" id="cellId" min="1" max="365" value="184"><button id="inspect">READ THROUGH 184</button></div>
+<p class="mini" id="cellInfo">Cell 184 is an address in the 365-slot grid; Node 184 is a separate gateway in the symbolic 208-address layer.</p>
+<div class="readout" style="margin:12px 0"><span>GATE <strong class="mono">184</strong></span><span>STATE FP <strong id="fingerprint" class="mono">—</strong></span><span>LEDGER <strong id="logSize" class="mono">0</strong></span></div><pre class="receipt" id="receipt">No gate transaction yet. Cruise visually or renew to produce a receipt.</pre>
+<button id="copy">COPY LAST RECEIPT JSON</button><p class="mini">Every simulation read/write calls the same Node 184 entry point. Receipts are local and unsigned; the fingerprint is a noncryptographic change indicator. This models software renewal, not real electron shells, chemical behavior or Planck foam.</p>
+</div></article></div><footer>NULLRIDER / K.E.T · SINGLE GATE :: 184 · TRIATOMIC :: 118+118+118+11 · GYRO :: HOMEOSTASIS · NO EXTERNAL SERVER · NO SECRET KEYS</footer>
+</div><script>
+/* NULLRIDER TRIATOMIC 184 — symbolic homeostasis, no physical chemistry claims.
+ * The closure exports one entry point. All observations and mutations use gate 184.
+ * 3 x 118 address slots + 11 shared reserve = 365 positions.
+ */
+const NODE = 184;
+const COUNT = 365;
+const BANDS = Object.freeze([
+  Object.freeze({name:'TACH',time:-1,engine:-2,count:118}),
+  Object.freeze({name:'GYRO',time:0,engine:0,count:118}),
+  Object.freeze({name:'POSI',time:1,engine:3,count:118}),
+  Object.freeze({name:'RESERVE',time:0,engine:0,count:11}),
+]);
+const copy = value => JSON.parse(JSON.stringify(value));
+function fingerprint(cells) {
+  // Noncryptographic change indicator; never an authenticity signature.
+  let n=2166136261;
+  for(const c of cells){
+    for(const ch of `${c.id}:${c.version}:${c.age}:${c.health.toFixed(2)}:${+c.fault}|`){n=Math.imul(n^ch.charCodeAt(0),16777619)>>>0;}
+  }
+  return n.toString(16).padStart(8,'0');
+}
+function createTriatomic184() {
+  const cells=[];
+  for (let b=0;b<BANDS.length;b++) for(let slot=0;slot<BANDS[b].count;slot++) {
+    const id=cells.length+1;
+    const age=slot%17;
+    cells.push({id,band:BANDS[b].name,slot:slot+1,version:0,age,health:Number((99.5-age*.15).toFixed(2)),fault:false});
+  }
+  if(cells.length!==COUNT)throw Error('REGISTRY_MISMATCH');
+  let cycle=0, remainderTenths=0, retiredTotal=0, serial=0;
+  const seen=new Set(), ledger=[];
+  function status(){
+    const faulty=cells.filter(c=>c.fault).length;
+    const low=cells.filter(c=>c.health<85&&!c.fault).length;
+    return {node:NODE,cycle,occupied:cells.length,capacity:COUNT,fullness:100,
+      triatomic:[118,118,118],reserve:11,temporal:[-1,0,1],engine:[-2,0,3],
+      faults:faulty,lowHealth:low,healthy:COUNT-faulty-low,
+      retiredTotal,renewedTotal:retiredTotal,quotaRemainderTenths:remainderTenths,
+      verdict:faulty===0&&low===0&&cells.length===COUNT?'STABLE':'SERVICE_REQUIRED',
+      fingerprint:fingerprint(cells),last:ledger.length?copy(ledger.at(-1)):null,
+      logSize:ledger.length};
+  }
+  function record(type,tx,details){
+    const rec={node:NODE,serial:++serial,cycle,type,tx,details:copy(details),fingerprint:fingerprint(cells)};
+    ledger.push(rec);
+    return rec;
+  }
+  function runCycle(tx) {
+    cycle++;
+    // Fractional carry: exactly 73 retirements in 10 cycles (7.3 average).
+    let quota=7;
+    remainderTenths+=3;
+    if(remainderTenths>=10){quota++;remainderTenths-=10;}
+    for(const cell of cells){cell.age++;cell.health=Math.max(0,Number((cell.health-.15).toFixed(2)));}
+    const risk = c => (c.fault?1e6:0)+(100-c.health)*100+c.age*.01;
+    // Ensure all three concurrent branches can renew; no one branch owns the gate.
+    const selected=[];
+    for(const b of ['TACH','GYRO','POSI']){
+      const best=cells.filter(c=>c.band===b).sort((a,z)=>risk(z)-risk(a)||a.id-z.id)[0];
+      selected.push(best);
+    }
+    const chosen=new Set(selected.map(c=>c.id));
+    const others=cells.filter(c=>!chosen.has(c.id)).sort((a,z)=>risk(z)-risk(a)||a.id-z.id);
+    selected.push(...others.slice(0,quota-selected.length));
+    const retired=selected.map(c=>({id:c.id,band:c.band,version:c.version,health:c.health,fault:c.fault}));
+    for(const c of selected){c.version++;c.age=0;c.health=100;c.fault=false;}
+    retiredTotal+=quota;
+    const evt=record('RENEW',tx,{quota,retired,created:retired.map(c=>({id:c.id,version:c.version+1})),replaced:quota,
+       retained:COUNT-quota,occupied:COUNT,percentage:quota/COUNT*100});
+    return {event:evt,stats:status()};
+  }
+  function through184(packet){
+    if(!packet||packet.via!==NODE)return {accepted:false,error:'WRONG_GATE_EXPECTED_184'};
+    const {op,tx}=packet;
+    if(op==='VIEW')return {accepted:true,snapshot:{...status(),cells:copy(cells),ledger:copy(ledger)}};
+    if(typeof tx!=='string'||!tx.trim())return {accepted:false,error:'TX_REQUIRED'};
+    if(seen.has(tx))return {accepted:false,error:'REPLAY_BLOCKED',stats:status()};
+    if(op!=='RENEW'&&op!=='FAULT'&&op!=='RESEED')return {accepted:false,error:'UNKNOWN_OPERATION'};
+    if(op==='FAULT'&&(!Number.isInteger(packet.cell)||packet.cell<1||packet.cell>COUNT))
+      return {accepted:false,error:'INVALID_CELL_ID'};
+    seen.add(tx);
+    if(op==='RENEW')return {accepted:true,...runCycle(tx)};
+    if(op==='FAULT'){
+      const cell=cells[packet.cell-1];cell.fault=true;cell.health=0;
+      const event=record('FAULT',tx,{id:cell.id,band:cell.band});
+      return {accepted:true,event,stats:status()};
+    }
+    // Reseeding, if wanted, still records a transition; the receipt ledger is never erased.
+    for(const c of cells){c.version++;c.age=0;c.health=100;c.fault=false;}
+    cycle=0;remainderTenths=0;
+    const event=record('RESEED',tx,{preservedCapacity:COUNT});
+    return {accepted:true,event,stats:status()};
+  }
+  return Object.freeze({through184});
+}
+
+/* Browser cockpit. All reads and writes route to the closure's Node 184 gate. */
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id), core=createTriatomic184();
+let serial=0, lastReceipt=null, snapshot, spin=0, halted=false, speed=1, last=0, selectedId=184;
+const send=(op,more={})=>core.through184({via:NODE,op,tx:`local-${++serial}`, ...more});
+function refresh(){
+ const r=core.through184({via:NODE,op:'VIEW'});
+ if(!r.accepted)throw Error('NODE_184_VIEW_BLOCKED');
+ snapshot=r.snapshot;
+ $('occupancy').textContent=`${snapshot.occupied}/${snapshot.capacity}`;
+ $('cycle').textContent=String(snapshot.cycle);
+ $('quota').textContent=String(snapshot.quotaRemainderTenths>=7?8:7);
+ $('renewed').textContent=String(snapshot.renewedTotal);
+ $('faults').textContent=String(snapshot.faults);
+ $('fingerprint').textContent=snapshot.fingerprint;
+ $('logSize').textContent=String(snapshot.logSize);
+ $('verdict').textContent=snapshot.verdict;
+ $('verdict').className=snapshot.verdict==='STABLE'?'statusok':'statusbad';
+ $('gateStatus').textContent='NODE 184 · ROUTED';
+ $('cellInfo').textContent=describeCell(selectedId);
+}
+function describeCell(id){const c=snapshot?.cells?.[id-1];return c?`CELL ${id} :: ${c.band} / SLOT ${c.slot} :: VERSION ${c.version} :: AGE ${c.age} :: HEALTH ${c.health.toFixed(2)} :: ${c.fault?'FAULT':'NORMAL'}`:'INVALID CELL';}
+function showReceipt(event){
+ lastReceipt=event; $('receipt').textContent=JSON.stringify(event,null,2);
+}
+function execute(op,more={}){
+ const r=send(op,more);
+ if(r.accepted){showReceipt(r.event);refresh();}
+ else{$('receipt').textContent=JSON.stringify(r,null,2);$('gateStatus').textContent=r.error;}
+ return r;
+}
+$('one').addEventListener('click',()=>execute('RENEW'));
+$('ten').addEventListener('click',()=>{for(let i=0;i<10;i++)execute('RENEW');});
+$('ninety').addEventListener('click',()=>{for(let i=0;i<90;i++)execute('RENEW');});
+$('fault').addEventListener('click',()=>execute('FAULT',{cell:184}));
+$('reset').addEventListener('click',()=>execute('RESEED'));
+$('pause').addEventListener('click',()=>{halted=!halted;$('pause').textContent=halted?'▶ RESUME':'Ⅱ PAUSE';});
+$('speed').addEventListener('input',e=>{speed=Number(e.target.value);$('speedText').textContent=`${speed.toFixed(1)}×`;});
+$('inspect').addEventListener('click',()=>{const n=Number($('cellId').value);if(!Number.isInteger(n)||n<1||n>365){$('cellInfo').textContent='INVALID CELL · MUST BE 1–365';return;}selectedId=n;refresh();});
+$('copy').addEventListener('click',async()=>{if(!lastReceipt)return;try{await navigator.clipboard.writeText(JSON.stringify(lastReceipt,null,2));$('gateStatus').textContent='RECEIPT COPIED';}catch{$('gateStatus').textContent='COPY UNAVAILABLE';}});
+
+// A perspective projection of three 118-point cyclic assemblies and 11 reserve dots.
+const canvas=$('stage'),ctx=canvas.getContext('2d');
+const colors=['#ffb66e','#65e9b4','#5cdde8'];
+let drag=false,lastX=0,yaw=-.18,pitch=.15;
+canvas.addEventListener('pointerdown',e=>{drag=true;lastX=e.clientX;try{canvas.setPointerCapture(e.pointerId);}catch{}});
+canvas.addEventListener('pointerup',()=>drag=false);
+canvas.addEventListener('pointercancel',()=>drag=false);
+canvas.addEventListener('pointermove',e=>{if(drag){yaw+=(e.clientX-lastX)*.008;lastX=e.clientX;}});
+function project(x,y,z,scale,cy,cx){
+ const a=yaw+spin*.18,xx=x*Math.cos(a)-z*Math.sin(a),zz=x*Math.sin(a)+z*Math.cos(a);
+ const yy=y*Math.cos(pitch)-zz*Math.sin(pitch),depth=y*Math.sin(pitch)+zz*Math.cos(pitch);
+ const persp=1/(1+depth*.045);
+ return [cx+xx*scale*persp,cy+yy*scale*persp,persp];
+}
+function line(a,b,color,alpha=1,width=1){ctx.strokeStyle=color;ctx.globalAlpha=alpha;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();ctx.globalAlpha=1;}
+function draw(now){
+ const w=canvas.clientWidth||900,h=canvas.clientHeight||370,dpr=Math.min(2,devicePixelRatio||1);
+ if(canvas.width!==Math.floor(w*dpr)||canvas.height!==Math.floor(h*dpr)){canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);}
+ ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+ if(!halted)spin+=Math.min(40,now-(last||now))*.00045*speed;last=now;
+ const mid=w/2,cy=h*.48,scale=Math.min(w*.075,47);
+ const positions=[-3.9,0,3.9];
+ // Draw from the far side first, so the center gate reads as a bridge between branches.
+ positions.forEach((center,i)=>{
+   const col=colors[i];const group=snapshot.cells.slice(i*118,(i+1)*118);
+   const rad=1.48;
+   ctx.fillStyle=col; ctx.shadowBlur=20;ctx.shadowColor=col;
+   const pcenter=project(center,0,0,scale,cy,mid);
+   ctx.beginPath();ctx.arc(pcenter[0],pcenter[1],5,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+   const dots=[];
+   for(let j=0;j<118;j++){
+     const theta=2*Math.PI*j/118+spin*(i===1?-.8:1)*(i===2?-1:1);
+     const x=center+Math.cos(theta)*rad;
+     const z=Math.sin(theta)*.74;
+     const y=Math.sin(theta*2+i)*.33 + Math.sin(theta)*.58;
+     const p=project(x,y,z,scale,cy,mid);dots.push({p,c:group[j]});
+   }
+   dots.sort((a,b)=>b.p[2]-a.p[2]);
+   for(const {p,c} of dots){ctx.fillStyle=c.fault?'#f26573':col;ctx.globalAlpha=.25+p[2]*.55;ctx.beginPath();ctx.arc(p[0],p[1],(c.id===selectedId?5.2:2.05)*p[2],0,Math.PI*2);ctx.fill();}
+   ctx.globalAlpha=1;
+ });
+ const gate=project(0,-.1,0,scale,cy,mid);
+ for(const c of [-3.9,3.9])line(project(c,0,0,scale,cy,mid),gate,'#e7bf80',.37,2);
+ // Reserve slots: an independent central belt, not a fourth atomic band.
+ for(let j=0;j<11;j++){
+   const t=Math.PI*2*j/11-spin*.8;
+   const p=project(.9*Math.cos(t),1.0*Math.sin(t),.2*Math.sin(t),scale,cy,mid);
+   ctx.beginPath();ctx.fillStyle='#b6a9ff';ctx.arc(p[0],p[1],3,0,Math.PI*2);ctx.fill();
+ }
+ ctx.shadowBlur=26;ctx.shadowColor='#ffc27c';ctx.fillStyle='#f8c984';ctx.beginPath();ctx.arc(gate[0],gate[1],7,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+ ctx.textAlign='center';ctx.font='bold 12px monospace';ctx.fillStyle='#ffe5bd';ctx.fillText('184',gate[0],gate[1]+26);
+ requestAnimationFrame(draw);
+}
+refresh();requestAnimationFrame(draw);
+window.__NR184_TEST__=Object.freeze({through184:packet=>core.through184(packet),getSnapshot:()=>core.through184({via:NODE,op:'VIEW'}).snapshot});
+})();
+
+</script></body></html>
