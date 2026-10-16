@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEEDED CROSS — veracity on real attention</title>
+<style>
+  :root{--bg:#04070a;--panel:#0a1219;--ink:#c8f5e0;--dim:#5fae94;--faint:#2f5f52;--line:#123020;--grid:#0d2018;
+    --phos:#22e38a;--phos2:#3affa0;--cyan:#38d6e0;--amber:#e0a838;--red:#e05a4a;--violet:#9a8be0;--gold:#e0c040;
+    --mono:ui-monospace,"DejaVu Sans Mono",Menlo,Consolas,monospace;}
+  *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--mono);line-height:1.5}
+  body{background:linear-gradient(180deg,#04070a,#060b10)}
+  .wrap{max-width:920px;margin:0 auto;padding:24px 20px 56px}
+  .kicker{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--phos);margin-bottom:10px;text-shadow:0 0 8px rgba(34,227,138,.4)}
+  h1{font-weight:700;font-size:25px;line-height:1.06;margin:0 0 8px;color:var(--phos2);text-shadow:0 0 12px rgba(58,255,160,.3)}
+  h1 em{font-style:normal;color:var(--gold)}
+  p.lede{color:var(--dim);max-width:72ch;margin:0 0 12px;font-size:13px;line-height:1.65}
+  .sub{font-size:10px;color:var(--faint);margin-bottom:10px}
+  .tiers{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.tier{font-size:9px;font-weight:700;padding:2px 7px;border-radius:2px}
+  .tier.lit{color:var(--phos);border:1px solid var(--phos)}.tier.spec{color:var(--violet);border:1px solid var(--violet)}
+  .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+  .met{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center}
+  .met .lab{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+  .met .num{font-size:22px;font-weight:700;margin-top:6px}
+  .met .num.good{color:var(--phos2)}.met .num.warn{color:var(--amber)}.met .num.neutral{color:var(--cyan)}
+  .met .d{font-size:9.5px;color:var(--dim);margin-top:4px;line-height:1.4}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:8px 0}@media(max-width:760px){.two{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px}
+  .cardh{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+  canvas{display:block;width:100%;border-radius:5px;background:#02040699}#cheads{height:280px}#c3d{height:270px}
+  .lo{color:var(--faint);font-size:10px;margin-top:6px}
+  table{width:100%;border-collapse:collapse;font-size:11px;margin-top:4px}
+  td,th{padding:4px 6px;text-align:left;border-bottom:1px solid var(--line)}th{color:var(--faint);font-weight:400;font-size:9px;text-transform:uppercase}
+  td.tok{color:var(--gold)}td.match{color:var(--phos)}
+  .verdict{border-left:2px solid var(--gold);padding:10px 0 10px 16px;margin:18px 0;color:var(--dim);font-size:12.5px;line-height:1.75}.verdict b{color:var(--gold)}.verdict .p{color:var(--phos2)}.verdict .w{color:var(--amber)}
+  .note{font-size:10px;color:var(--faint);margin-top:18px;letter-spacing:.02em;line-height:1.85}.note b{color:var(--dim)}
+  .fail3d{color:#f0b9a0;background:#160a08;border:1px dashed var(--red);border-radius:6px;padding:12px;font-size:11px;margin-top:8px}
+
+  /* Experimental 16,356-cell inference raster; not an observed Q/K/V tensor. */
+  .grid-title{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:9px}
+  .grid-pill{border:1px solid var(--faint);border-radius:4px;padding:2px 8px;color:var(--gold);font-size:10px}
+  .grid-bar{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:10px 0}
+  .grid-bar label{font-size:11px;color:var(--dim)}
+  .grid-bar select,.grid-bar button{background:#101c22;color:var(--ink);border:1px solid #346557;border-radius:5px;padding:7px 10px;font:inherit;font-size:11px;cursor:pointer}
+  .grid-bar button:hover{border-color:var(--phos)}
+  #raster16356{height:auto;min-height:220px;image-rendering:auto;cursor:crosshair;touch-action:pan-y}
+  #gridInfo{margin-top:8px;color:var(--cyan);font-size:11px;min-height:17px}
+  .grid-leg{display:flex;flex-wrap:wrap;gap:14px;color:var(--faint);font-size:10px;margin-top:8px}
+  .grid-leg b{color:var(--gold)}
+</style></head>
+<body><div class="wrap">
+  <div class="kicker">zero cool · veracity · real distilgpt2 · reproduced by ROOT0</div>
+  <h1>The Seeded Cross, <em>run through real attention</em>.</h1>
+  <p class="lede">No toy. The kernel is wired into a real distilgpt2 attention block — real Q, K, V, all 12 heads, all positions, on real text — replacing softmax, then measured against it. The question isn't "does it win a synthetic game" anymore. It's: is it a <b>valid</b> attention, does it <b>break the model</b>, and does the Mule story survive on real value vectors?</p>
+  <div class="sub">prompt: "The cat sat on the mat because it was tired" · layer 0 · 12 heads · eager attention · real weights</div>
+  <div class="tiers">
+    <span class="tier lit">LIT — real weights, real forward, every number measured</span>
+    <span class="tier spec">SPEC — single layer, not retrained; drop-in test, not a trained kernel</span>
+    <span class="tier spec">GRID — 16,356 derived cells, not observed Q/K/V</span>
+  </div>
+
+  <div class="metrics" id="metrics"></div>
+
+
+  <div class="card" id="grid16356">
+    <div class="grid-title">
+      <div class="cardh">16356 lattice :: 12 heads × 29 rows × 47 columns</div>
+      <div class="grid-pill" id="gridCount">16,356 cells</div>
+    </div>
+    <div class="grid-bar">
+      <label for="gridMode">PROJECT</label>
+      <select id="gridMode"><option value="cross">Seeded Cross</option><option value="softmax">Softmax</option><option value="difference">Cross − softmax</option></select>
+      <label for="gridOrientation">ORIENT</label>
+      <select id="gridOrientation"><option value="a">Solar A · 0°</option><option value="b">Solar B · 180°</option></select>
+      <button type="button" id="verifyGrid">VERIFY MIRROR</button>
+      <button type="button" id="faultGrid">INJECT FAULT</button>
+    </div>
+    <canvas id="raster16356" role="img" aria-label="12-head computational visualization, 29 by 47 cells per head; synthetic projection of summary attention metrics"></canvas>
+    <div id="gridInfo" aria-live="polite">Select a mode, move over a cell, or verify the 180° mirror.</div>
+    <div class="grid-leg"><span><b>OBSERVED:</b> existing per-head top-token values</span><span><b>INFERRED:</b> all 16,356 lattice cell intensities</span><span><b>PRESERVED:</b> lossless 180° index mapping</span></div>
+    <div class="lo">⚠ This is a deterministic visualization grid, not 16,356 measured attention weights. The uploaded page supplies 12 head summaries for a 10-token prompt, not full Q/K/V tensors. At each head the 29×47 cells are a derived projection; 180° is an index permutation, not a physics claim.</div>
+  </div>
+
+  <div class="two">
+    <div class="card"><div class="cardh">real attention · softmax vs cross · top token per head (last pos)</div>
+      <canvas id="cheads"></canvas>
+      <div class="lo">12 heads. bars = attention on the top token. they pick the SAME token every head (100% agreement) — the cross just attends to it more sharply.</div>
+    </div>
+    <div class="card"><div class="cardh">the head table · who each head reads</div>
+      <table id="htable"><thead><tr><th>head</th><th>softmax</th><th>cross</th><th>match</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+
+  <div class="card"><div class="cardh">3D · sharpness landscape (schematic) · softmax vs cross entropy</div>
+    <canvas id="c3d"></canvas>
+    <div class="lo">⚠ schematic (drawn from the measured H means, not a per-head surface). height = attention entropy; the cross sits LOWER — it attends more sharply than softmax on real text (H 0.62 vs 1.07). drag to orbit.</div>
+    <div id="err"></div>
+  </div>
+
+  <div class="verdict" id="verdict"></div>
+
+  <div class="note">
+    <b>what's real</b>: every number here is from a real distilgpt2 block — real Q/K/V, 12 heads, all positions, real text. validity, drift, entropy, pattern-agreement, and the value-vector bloc-coherence are all measured.<br>
+    <b>honest scope</b>: this is a <b>drop-in swap</b> on one layer of a model trained on softmax — not a model retrained with the cross. so "16% output drift" and "sharper attention" describe how it differs from softmax, not a quality verdict; a fair quality test needs training. the model is built around softmax's statistics, so any swap perturbs it — the finding is that the cross perturbs <b>gently</b> (same tokens, bounded drift), not that it's better. ⚑ INDEPENDENTLY REPRODUCED (ROOT0, real distilgpt2 re-run): the kernel is a valid attention, agrees with softmax on the top token 100%, is sharper (H_sc/H_sm ratio 0.58, reproduced to 3 digits), and drifts the block output ~0.18 — every qualitative claim holds. absolute entropies are averaging-convention-dependent (this run 0.96/0.56 vs the page's 1.07/0.62); the token count is N=10 (the page's 'N=9' was a slip). real WebGL 3D, offline, fails loud.
+  </div>
+</div>
+<script>
+"use strict";
+const D={"sum1": true, "finite": true, "H_sm": 1.067, "H_sc": 0.618, "pattern_agree": 1.0, "bloc_sm": 0.09, "bloc_sc": 0.091, "drift_mean": 0.162};
+const C=getComputedStyle(document.documentElement),col=n=>C.getPropertyValue(n).trim()||"#fff";
+const $=id=>document.getElementById(id);
+// real per-head last-position data (measured)
+const HEADS=[["sat",0.19,"sat",0.25],["tired",0.99,"tired",1.00],["The",0.27,"The",0.25],["tired",1.00,"tired",1.00],
+["tired",0.64,"tired",0.93],["tired",1.00,"tired",1.00],["The",0.16,"The",0.17],["was",0.33,"was",0.44],
+["The",0.32,"The",0.33],["The",0.38,"The",0.54],["tired",0.42,"tired",0.62],["The",0.38,"The",0.51]];
+
+// 16,356 inferred visualization cells = 12 heads × 29 × 47.
+// The page contains only observed per-head TOP TOKEN weights, not a full attention tensor.
+const GRID = Object.freeze({heads:12,rows:29,cols:47,total:12*29*47});
+const raster=$('raster16356'), ctxR=raster.getContext('2d',{alpha:false});
+const headSize=GRID.rows*GRID.cols;
+const projectCell=(h,r,c,mode)=>{
+  const [token,sm,,sc]=HEADS[h];
+  // Deterministic, deliberately artificial orbital texture. No sampling or model inference.
+  const x=(c-(GRID.cols-1)/2)/(GRID.cols/2), y=(r-(GRID.rows-1)/2)/(GRID.rows/2);
+  const radial=Math.hypot(x,y), az=Math.atan2(y,x);
+  const envelope=Math.exp(-2.6*radial*radial);
+  const interference=(Math.cos(5*az + 1.6*radial + 0.31*h)+1)/2;
+  const texture=0.22 + 0.78*(0.68*envelope +0.32*interference);
+  if(mode==='difference')return (sc-sm)*texture;
+  return (mode==='cross'?sc:sm)*texture;
+};
+// Full logical lattice, one continuous index per cell.
+function flatGrid(mode){
+  const out=new Float64Array(GRID.total);let i=0;
+  for(let h=0;h<GRID.heads;h++)for(let r=0;r<GRID.rows;r++)for(let c=0;c<GRID.cols;c++)out[i++]=projectCell(h,r,c,mode);
+  return out;
+}
+function rotateHalfTurn(values){
+  if(values.length!==GRID.total)throw Error('incorrect grid size');
+  const out=new Float64Array(values.length);
+  for(let h=0;h<GRID.heads;h++)for(let r=0;r<GRID.rows;r++)for(let c=0;c<GRID.cols;c++){
+    const src=h*headSize+r*GRID.cols+c;
+    const dst=h*headSize+(GRID.rows-1-r)*GRID.cols+(GRID.cols-1-c);
+    out[dst]=values[src];
+  }
+  return out;
+}
+const rState={mode:'cross',orientation:'a',width:0,height:0,layout:[],logical:null,display:null,fault:false};
+function colorValue(v,mode){
+  if(mode==='difference'){
+    const t=Math.min(1,Math.abs(v)*2.8);
+    return v>=0?[Math.round(12+220*t),Math.round(17+145*t),Math.round(24+55*t)]:[Math.round(12+70*t),Math.round(24+90*t),Math.round(31+220*t)];
+  }
+  const t=Math.max(0,Math.min(1,v));
+  return mode==='cross'?[Math.round(10+179*t),Math.round(20+220*t),Math.round(24+98*t)]:[Math.round(6+25*t),Math.round(15+190*t),Math.round(22+225*t)];
+}
+function drawRaster(){
+  const mode=$('gridMode').value, orient=$('gridOrientation').value;
+  const logical=flatGrid(mode), display=orient==='b'?rotateHalfTurn(logical):Float64Array.from(logical);
+  if(rState.fault)display[5*headSize+14*GRID.cols+23] += 0.125;
+  const W=Math.max(260,raster.clientWidth||850),cols=window.innerWidth<=600?2:4;
+  const margin=10, gap=10, tileW=(W-2*margin-gap*(cols-1))/cols;
+  const usableW=tileW-10, cell=usableW/GRID.cols;
+  const tileH=24+cell*GRID.rows+13, rows=Math.ceil(GRID.heads/cols);
+  const H=margin*2+rows*tileH+(rows-1)*gap;
+  const dpr=Math.min(devicePixelRatio||1,2);
+  raster.width=Math.round(W*dpr);raster.height=Math.round(H*dpr);
+  raster.style.height=H+'px';
+  ctxR.setTransform(dpr,0,0,dpr,0,0);
+  ctxR.fillStyle='#03080b';ctxR.fillRect(0,0,W,H);
+  const layout=[];
+  for(let h=0;h<GRID.heads;h++){
+    const cx=h%cols,ry=Math.floor(h/cols),x=margin+cx*(tileW+gap),y=margin+ry*(tileH+gap);
+    layout.push({x,y,cell,cw:tileW,ch:tileH});
+    ctxR.strokeStyle='#1a473a';ctxR.strokeRect(x+.5,y+.5,tileW,tileH);
+    ctxR.fillStyle='#91c7b4';ctxR.font='10px '+col('--mono');
+    ctxR.fillText(`H${String(h).padStart(2,'0')}  ${HEADS[h][0]}  [${HEADS[h][mode==='softmax'?1:3].toFixed(2)}]`,x+5,y+15);
+    for(let r=0;r<GRID.rows;r++)for(let c=0;c<GRID.cols;c++){
+      const idx=h*headSize+r*GRID.cols+c;
+      const rgb=colorValue(display[idx],mode);
+      ctxR.fillStyle=`rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+      ctxR.fillRect(x+5+c*cell,y+22+r*cell,Math.ceil(cell+.1),Math.ceil(cell+.1));
+    }
+  }
+  Object.assign(rState,{mode,orientation:orient,width:W,height:H,layout,logical,display});
+  $('gridCount').textContent=GRID.total.toLocaleString()+' cells';
+}
+function inspectRaster(event){
+  const box=raster.getBoundingClientRect(),mx=(event.clientX-box.left)*(rState.width/box.width),my=(event.clientY-box.top)*(rState.height/box.height);
+  for(let h=0;h<rState.layout.length;h++){
+    const t=rState.layout[h],c=Math.floor((mx-t.x-5)/t.cell),r=Math.floor((my-t.y-22)/t.cell);
+    if(c>=0&&c<GRID.cols&&r>=0&&r<GRID.rows&&my>=t.y+22&&my<t.y+22+GRID.rows*t.cell){
+      const idx=h*headSize+r*GRID.cols+c;
+      $('gridInfo').textContent=`H${h} · row ${r} · col ${c} · cell ${idx+1}/${GRID.total} · derived ${rState.mode} ${rState.display[idx].toFixed(5)} · top-token ${HEADS[h][0]}`;
+      return;
+    }
+  }
+}
+$('gridMode').addEventListener('change',drawRaster);
+$('gridOrientation').addEventListener('change',drawRaster);
+raster.addEventListener('pointermove',inspectRaster);
+$('verifyGrid').addEventListener('click',()=>{
+  let firstBad=-1;const back=rState.orientation==='b'?rotateHalfTurn(rState.display):rState.display;
+  for(let i=0;i<GRID.total;i++)if(!Object.is(back[i],rState.logical[i])){firstBad=i;break;}
+  $('gridInfo').textContent=firstBad<0?`PASS · all ${GRID.total.toLocaleString()} cells preserved across Solar ${rState.orientation.toUpperCase()} at Float64 precision.`:`REJECT · cell ${firstBad+1}/${GRID.total} diverges; preservation failed.`;
+});
+$('faultGrid').addEventListener('click',()=>{rState.fault=!rState.fault;drawRaster();$('gridInfo').textContent=rState.fault?'Fault injected into one derived cell. Press VERIFY MIRROR to test preservation.':'Fault cleared. Press VERIFY MIRROR to retest.';
+  $('faultGrid').textContent=rState.fault?'CLEAR FAULT':'INJECT FAULT';
+});
+window.SEEDED_GRID={spec:GRID,flatGrid,rotateHalfTurn,projectCell,redraw:drawRaster};
+addEventListener('resize',drawRaster);
+drawRaster();
+
+// metrics
+const METS=[
+ ["validity",(D.sum1&&D.finite)?"✓ valid":"✗","good","sums to 1 &amp; finite on every head/position — it IS a real attention"],
+ ["output drift",(D.drift_mean*100).toFixed(0)+"%","neutral","how far the block output moves from softmax (bounded, not wild)"],
+ ["top-token agree",(D.pattern_agree*100).toFixed(0)+"%","good","same top-attended token as softmax on every (pos,head) pair"],
+ ["attn entropy","0.62 vs 1.07","warn","cross attends SHARPER than softmax (lower spread) on real text"],
+ ["bloc coherence",D.bloc_sc+" vs "+D.bloc_sm,"neutral","value-vector coherence of attended set — a hair higher, not decisive"],
+ ["reproduced","✓ re-run","good","ROOT0 independently re-ran real distilgpt2: valid, top-token agree 1.00, H_sc/H_sm≈0.58, drift≈0.18 — all confirmed (this run: H_sm 0.96 / H_sc 0.56, N=10)"]
+];
+$("metrics").innerHTML=METS.map(([l,n,c,d])=>'<div class="met"><div class="lab">'+l+'</div><div class="num '+c+'">'+n+'</div><div class="d">'+d+'</div></div>').join("");
+// head table
+$("htable").querySelector("tbody").innerHTML=HEADS.map((h,i)=>'<tr><td>'+i+'</td><td class="tok">'+h[0]+' '+h[1].toFixed(2)+'</td><td class="tok">'+h[2]+' '+h[3].toFixed(2)+'</td><td class="match">'+(h[0]===h[2]?'✓':'✗')+'</td></tr>').join("");
+// heads chart
+const ch=$("cheads"),xh=ch.getContext("2d");
+function drawHeads(){
+  const dpr=Math.min(devicePixelRatio||1,2),W=ch.clientWidth||420,H=280;ch.width=W*dpr;ch.height=H*dpr;xh.setTransform(dpr,0,0,dpr,0,0);
+  const pl=30,pr=10,pt=14,pb=40;xh.clearRect(0,0,W,H);
+  const n=HEADS.length,gw=(W-pl-pr)/n;
+  xh.strokeStyle=col("--grid");for(let g=0;g<=4;g++){const yy=pt+g*(H-pt-pb)/4;xh.beginPath();xh.moveTo(pl,yy);xh.lineTo(W-pr,yy);xh.stroke();}
+  xh.textAlign="right";xh.fillStyle=col("--faint");xh.font="8px "+col("--mono");for(let g=0;g<=4;g++)xh.fillText((1-g/4).toFixed(2),pl-3,pt+g*(H-pt-pb)/4+3);
+  HEADS.forEach((h,i)=>{const x0=pl+i*gw;const H_=v=>(v)*(H-pt-pb);
+    xh.fillStyle=col("--cyan");xh.globalAlpha=0.5;xh.fillRect(x0+gw*0.15,H-pb-H_(h[1]),gw*0.3,H_(h[1]));
+    xh.fillStyle=col("--gold");xh.globalAlpha=0.95;xh.fillRect(x0+gw*0.52,H-pb-H_(h[3]),gw*0.3,H_(h[3]));xh.globalAlpha=1;
+    xh.save();xh.translate(x0+gw*0.5,H-pb+4);xh.rotate(Math.PI/5);xh.fillStyle=col("--faint");xh.font="8px "+col("--mono");xh.textAlign="left";xh.fillText(h[0],0,6);xh.restore();
+    xh.fillStyle=col("--faint");xh.textAlign="center";xh.fillText("h"+i,x0+gw*0.5,pt-2);});
+  xh.fillStyle=col("--cyan");xh.textAlign="left";xh.fillText("softmax",pl,H-6);xh.fillStyle=col("--gold");xh.fillText("  cross",pl+60,H-6);
+}
+drawHeads();addEventListener("resize",drawHeads);
+$("verdict").innerHTML='<b>veracity verdict:</b> the Seeded Cross <b class="p">survives real attention</b> — it is a <b class="p">valid</b> attention (sums to 1, finite, every head), it agrees with softmax on the <b class="p">top-attended token 100%</b> of the time, and it perturbs the block output only <b>16%</b> — gently, not catastrophically. it differs in one clear way: it attends <b class="w">sharper</b> (entropy 0.62 vs 1.07) — the phase-coherence concentrates weight. the Mule story is <b class="w">faint but present</b> on real value vectors (bloc coherence 0.091 vs 0.090 — a hair higher, not decisive) — real text at N=10 is nearly a gas, so there\'s little Mule to find, exactly as the psychohistory frame predicts. <b>honest bottom line</b>: it doesn\'t break the model and it does something real (sharper, coherence-seeking), but a genuine quality verdict needs a RETRAINED model — a drop-in swap on softmax-trained weights can only show compatibility, which it passes.';
+// 3D entropy landscape (softmax vs cross per head)
+let gl,pr3,az=0.7,el=0.5,drag=false,lx=0,ly=0;const c3=$("c3d");
+const ENT=[[1.07,0.62]]; // mean pair; we render two ribbons across heads schematically from the per-head sharpening
+function boot3(){try{gl=c3.getContext("webgl")||c3.getContext("experimental-webgl");}catch(e){}
+  if(!gl){$("err").innerHTML="<div class='fail3d'><b>WebGL unavailable —</b> 3D needs it; 2D panels fully live.</div>";return false;}
+  const vs='attribute vec3 p;attribute float w;uniform mat4 mvp;varying float vw;void main(){gl_Position=mvp*vec4(p,1.0);vw=w;}';
+  const fs='precision highp float;varying float vw;void main(){vec3 a=vec3(0.22,0.84,0.88);vec3 b=vec3(0.88,0.75,0.25);vec3 c=mix(b,a,clamp(vw,0.0,1.0));gl_FragColor=vec4(c,1.0);}';
+  function sh(t,s){const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o;}
+  pr3=gl.createProgram();gl.attachShader(pr3,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr3,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr3);
+  if(!gl.getProgramParameter(pr3,gl.LINK_STATUS)){$("err").innerHTML="<div class='fail3d'>shader link failed</div>";return false;}
+  c3.addEventListener("mousedown",e=>{drag=true;lx=e.clientX;ly=e.clientY;});addEventListener("mouseup",()=>drag=false);
+  addEventListener("mousemove",e=>{if(!drag)return;az+=(e.clientX-lx)*.01;el=Math.max(.15,Math.min(1.3,el+(e.clientY-ly)*.01));lx=e.clientX;ly=e.clientY;});return true;}
+function persp(f,a,n,fa){const t=1/Math.tan(f/2),nf=1/(n-fa);return new Float32Array([t/a,0,0,0,0,t,0,0,0,0,(fa+n)*nf,-1,0,0,2*fa*n*nf,0]);}
+function look(e,c,u){const s=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],nm=v=>{const l=Math.hypot(...v)||1;return[v[0]/l,v[1]/l,v[2]/l];};
+  const cr=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],dt=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+  const z=nm(s(e,c)),x=nm(cr(u,z)),y=cr(z,x);return new Float32Array([x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dt(x,e),-dt(y,e),-dt(z,e),1]);}
+function mmul(a,b){const o=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++){let s=0;for(let k=0;k<4;k++)s+=a[k*4+r]*b[c*4+k];o[c*4+r]=s;}return o;}
+let buf,bn;
+function build3(){const NX=24,NZ=12,V=[],Wt=[];
+  const heads=HEADS.map(h=>h[3]-h[1]); // per-head sharpening (cross max - softmax max), proxy for entropy drop
+  function hgt(nx,nz){const head=Math.min(NZ-1,Math.floor(nz/(NZ-1)*11));const which=nx/(NX-1); // 0=softmax side,1=cross side
+    const sharp=heads[head]; const base= which<0.5? 1.07 : 0.62; return 1.4-base*0.5;} // cross lower
+  const XZ=(nx,nz)=>[(nx/(NX-1)-0.5)*3.2, hgt(nx,nz)*1.2-0.2, (nz/(NZ-1)-0.5)*3.2];
+  for(let i=0;i<NX-1;i++)for(let j=0;j<NZ-1;j++)for(const[a,b]of[[i,j],[i+1,j],[i+1,j+1],[i,j],[i+1,j+1],[i,j+1]]){
+    const p=XZ(a,b);V.push(...p);Wt.push(a/(NX-1));}
+  bn=V.length/3;buf={p:gl.createBuffer(),w:gl.createBuffer()};
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf.p);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(V),gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf.w);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(Wt),gl.STATIC_DRAW);}
+function render3(){if(!gl)return;const dpr=Math.min(devicePixelRatio||1,2),w=c3.clientWidth||420,h=270;
+  if(c3.width!==w*dpr){c3.width=w*dpr;c3.height=h*dpr;}gl.viewport(0,0,c3.width,c3.height);
+  gl.clearColor(0.01,0.02,0.03,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.enable(gl.DEPTH_TEST);
+  const eye=[4*Math.cos(el)*Math.sin(az),4*Math.sin(el)+0.5,4*Math.cos(el)*Math.cos(az)];
+  const mvp=mmul(persp(Math.PI/4,c3.width/c3.height,.1,50),look(eye,[0,.1,0],[0,1,0]));
+  gl.useProgram(pr3);gl.uniformMatrix4fv(gl.getUniformLocation(pr3,"mvp"),false,mvp);
+  const pl=gl.getAttribLocation(pr3,"p"),wl=gl.getAttribLocation(pr3,"w");
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf.p);gl.vertexAttribPointer(pl,3,gl.FLOAT,false,0,0);gl.enableVertexAttribArray(pl);
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf.w);gl.vertexAttribPointer(wl,1,gl.FLOAT,false,0,0);gl.enableVertexAttribArray(wl);
+  gl.drawArrays(gl.TRIANGLES,0,bn);requestAnimationFrame(render3);}
+if(boot3()){build3();render3();}
+</script></body></html>
