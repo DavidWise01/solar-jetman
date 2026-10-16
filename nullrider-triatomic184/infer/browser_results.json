@@ -1,0 +1,184 @@
+{
+  "summary": {
+    "passed": 44,
+    "total": 44,
+    "failed": []
+  },
+  "checks": [
+    {
+      "name": "desktop no JS exceptions",
+      "pass": true
+    },
+    {
+      "name": "desktop renders 365 cells",
+      "pass": true
+    },
+    {
+      "name": "desktop shows correct symbolic lanes",
+      "pass": true
+    },
+    {
+      "name": "desktop truth initially hidden",
+      "pass": true
+    },
+    {
+      "name": "desktop inference initially idle",
+      "pass": true
+    },
+    {
+      "name": "desktop inference completes",
+      "pass": true    },
+    {
+      "name": "desktop fingerprint unchanged",
+      "pass": true
+    },
+    {
+      "name": "desktop still hidden truth",
+      "pass": true
+    },
+    {
+      "name": "desktop alerts visible",
+      "pass": true
+    },
+    {
+      "name": "desktop at least some decisive outputs",
+      "pass": true
+    },
+    {
+      "name": "desktop grid alert markers match result",
+      "pass": true
+    },
+    {
+      "name": "desktop select cell 184",
+      "pass": true
+    },
+    {
+      "name": "desktop reveal actual labels",
+      "pass": true
+    },
+    {
+      "name": "desktop brier score shown",
+      "pass": true
+    },
+    {
+      "name": "desktop holdout benchmark panel",
+      "pass": true
+    },
+    {
+      "name": "desktop 14600 cell holdout",
+      "pass": true
+    },
+    {
+      "name": "desktop holdout brier beats baseline",
+      "pass": true
+    },
+    {
+      "name": "desktop completely missing => abstain",
+      "pass": true
+    },
+    {
+      "name": "desktop missing => no false confidence",
+      "pass": true
+    },
+    {
+      "name": "desktop can reseed without change to population",
+      "pass": true
+    },
+    {
+      "name": "desktop no overflow document",
+      "pass": true
+    },
+    {
+      "name": "desktop final JS exceptions",
+      "pass": true
+    },
+    {
+      "name": "mobile no JS exceptions",
+      "pass": true
+    },
+    {
+      "name": "mobile renders 365 cells",
+      "pass": true
+    },
+    {
+      "name": "mobile shows correct symbolic lanes",
+      "pass": true
+    },
+    {
+      "name": "mobile truth initially hidden",
+      "pass": true
+    },
+    {
+      "name": "mobile inference initially idle",
+      "pass": true
+    },
+    {
+      "name": "mobile inference completes",
+      "pass": true
+    },
+    {
+      "name": "mobile fingerprint unchanged",
+      "pass": true
+    },
+    {
+      "name": "mobile still hidden truth",
+      "pass": true
+    },
+    {
+      "name": "mobile alerts visible",
+      "pass": true
+    },
+    {
+      "name": "mobile at least some decisive outputs",
+      "pass": true
+    },
+    {
+      "name": "mobile grid alert markers match result",
+      "pass": true
+    },
+    {
+      "name": "mobile select cell 184",
+      "pass": true
+    },
+    {
+      "name": "mobile reveal actual labels",
+      "pass": true
+    },
+    {
+      "name": "mobile brier score shown",
+      "pass": true
+    },
+    {
+      "name": "mobile holdout benchmark panel",
+      "pass": true
+    },
+    {
+      "name": "mobile 14600 cell holdout",
+      "pass": true
+    },
+    {
+      "name": "mobile holdout brier beats baseline",
+      "pass": true
+    },
+    {
+      "name": "mobile completely missing => abstain",
+      "pass": true
+    },
+    {
+      "name": "mobile missing => no false confidence",
+      "pass": true
+    },
+    {
+      "name": "mobile can reseed without change to population",
+      "pass": true
+    },
+    {
+      "name": "mobile no overflow document",
+      "pass": true
+    },
+    {
+      "name": "mobile final JS exceptions",
+      "pass": true
+    }
+  ]
+}
