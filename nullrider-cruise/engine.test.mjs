@@ -1,0 +1,13 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {BRANCHES,SIGNS,packBranch,unpackBranch,sha256,rotate180,rendezvous,equalBytes,SAMPLE} from './engine.mjs';
+const te=new TextEncoder();
+test('two different solar shell stacks and orientations',()=>{assert.deepEqual(BRANCHES.A.widths,[16,8,4,4]);assert.deepEqual(BRANCHES.B.widths,[8,4,4]);assert.deepEqual(BRANCHES.B.angle,180);});
+test('six original signs are preserved',()=>assert.equal(SIGNS.length,6));
+test('180° transform is involutive',()=>assert.deepEqual(rotate180(rotate180([2,-3])),[2,-3]));
+for(const role of ['A','B'])for(const len of [0,1,3,15,16,1024,4096])test(`${role} exact-byte restoration length ${len}`,()=>{const b=Uint8Array.from({length:len},(_,i)=>(i*137+13)%256);assert.ok(equalBytes(unpackBranch(packBranch(b,role),role),b));});
+for(const role of ['A','B'])test(`${role} rejects reordered shell stage`,()=>{const packed=packBranch(te.encode('abc'),role);const decoded=JSON.parse(atob(packed));decoded.stage=99;assert.throws(()=>unpackBranch(btoa(JSON.stringify(decoded)),role));});
+test('SHA-256 known vector',async()=>assert.equal(await sha256(te.encode('abc')),'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad'));
+test('rendezvous accepts preserved UTF-8 payload',async()=>{const r=(await rendezvous(SAMPLE+' 🚀 𐌰'));assert.equal(r.record.status,'ACCEPT');assert.equal(r.record.seam_crossings,1);assert.equal(r.record.source_sha256,r.record.solar_b_sha256);});
+test('rendezvous rejects altered B before zero crossing',async()=>{const r=(await rendezvous('cargo',{fault:true}));assert.equal(r.record.status,'REJECT');assert.equal(r.record.seam_crossings,0);assert.notEqual(r.record.solar_b_sha256,r.record.source_sha256);});
+test('browser receipt is explicitly marked unsigned',async()=>{const r=await rendezvous('cargo');assert.match(r.record.note,/unsigned/);});
