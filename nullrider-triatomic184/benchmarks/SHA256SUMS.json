@@ -1,0 +1,16 @@
+{
+  "SHA256": {
+    "engine.mjs": "095f1f79a622820b54c9376bbc287af91b1e90563988fa6b3cc21dfce2a0d9fb",
+    "engine.test.mjs": "9b7709cb359837ae818edc9020b60f50f8dec4ad1ff5cdebd67bc3fb01a67586",
+    "README.md": "3d5944a9f19e2db31abca6e865e831c29bba225014c7e789e637e643bc6558b5",
+    "benchmarks/inference_benchmark.mjs": "f56939fe89048970a50207172835640e03d1a663fcfac1c908973dacde68e1cc",
+    "benchmarks/inference_benchmark.test.mjs": "ffc2101e6bc75cdce96c4424b8dfffc15d2fff4ed0d1d44ef35874c6a840faf0",
+    "benchmarks/results.json": "8e1e290e2b5cf83a23fb9c4a0a0ce8bbe694a4ae547aadb5fb70ba038f4ff030",
+    "benchmarks/cycles.csv": "dc416981eb4e6d7c0e0c401e115600b1ee9b1616aae9a40e0a9ea3cef6b86240",
+    "benchmarks/INFERENCE_BENCHMARK.md": "ccd976849e23e6a51b9ba4800a376004afd01513dd137ce4566199ec07c6b735",
+    "benchmarks/INFERENCE_BENCHMARK.pdf": "69a59ad8b7e9de311384efeb2573a4302741dbc69b2f1df8a153bf2fd7606c78",
+    "benchmarks/make_report.py": "dd77ddd2fef9f5bbaef0ca690f2d42042f3b266afd0d0839046a7bf6c8bbcf07",
+    "benchmarks/TEST_RESULTS.txt": "1b699facc3cb5edc16168ddf59a33311c19eae3badbde886630a3d4f882527c1"
+  },
+  "engine_git_blob": "c829572ae2df2b06de10efac83a0b0d36fd60195"
+}
