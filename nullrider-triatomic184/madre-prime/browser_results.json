@@ -1,0 +1,186 @@
+{
+  "checks": [
+    {
+      "test": "desktop script errors absent",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "desktop 366 shown",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop 365 shown",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop canvas exists",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop no forced crossing on page load",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop 64 A cells",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop 64 B cells",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop 360 negative frame",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop 720 positive frame",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop preservation ACCEPT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop fault REJECT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop address inspection",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop zero anchor",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop inference core untouched",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop fault injected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop renewal population",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop 10 cycle renewal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "desktop all repairs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile script errors absent",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "test": "mobile 366 shown",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile 365 shown",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile canvas exists",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile no forced crossing on page load",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile 64 A cells",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile 64 B cells",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile 360 negative frame",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile 720 positive frame",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile preservation ACCEPT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile fault REJECT",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile address inspection",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile zero anchor",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile inference core untouched",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile fault injected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile renewal population",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile 10 cycle renewal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "test": "mobile all repairs",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "passed": 36,
+  "total": 36
+}
