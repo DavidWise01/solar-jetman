@@ -1,0 +1,351 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NULLRIDER · Node 184 Inference Observatory</title>
+<style>
+:root{--bg:#05090e;--panel:#0e171e;--panel2:#101d23;--line:#27414a;--text:#e3eee9;--dim:#8ba7aa;--mint:#64edc4;--amber:#ffb978;--violet:#b5a5ff;--red:#f6787e}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 55% -24%,#19353a 0%,#05090e 55%);color:var(--text);font:13px/1.45 ui-monospace,'SFMono-Regular',Consolas,monospace}main{max-width:1420px;padding:30px 28px 65px;margin:auto}a{color:var(--mint);text-decoration:none}a:hover{text-decoration:underline}header{display:flex;flex-wrap:wrap;gap:14px;align-items:end;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line)}.brand{letter-spacing:.32em;color:var(--mint);font-size:11px}.brandhead{font-size:clamp(24px,3.3vw,44px);margin:5px 0 0;font-weight:600;letter-spacing:-.055em}.brandhead em{color:var(--amber);font-style:normal}.subline{color:var(--dim);margin-top:10px}.pill{border:1px solid #46665b;border-radius:22px;padding:7px 12px;color:#a4cbbb;font-size:10px;letter-spacing:.07em}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.layout{display:grid;grid-template-columns:minmax(350px,1.07fr) minmax(330px,.93fr);gap:16px;margin-top:18px}.panel{background:linear-gradient(160deg,#101d23ed,#0b141cee);border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:0}.section{padding:19px 21px}.section+.section{border-top:1px solid var(--line)}.kicker{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--dim)}.big{font-size:28px;letter-spacing:-.04em;color:var(--mint)}.tight{margin:0}.scene{width:100%;height:310px;display:block;background:radial-gradient(circle at 50% 50%,#173b3b55,#090f17 60%)}.meters{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{border:1px solid var(--line);background:#08131b;padding:11px 13px;border-radius:9px;min-width:0}.metric b{font-size:21px;letter-spacing:-.03em;color:var(--mint);display:block;margin:4px 0 2px}.metric small{font-size:10px;color:var(--dim)}.controls{display:grid;grid-template-columns:1fr 1fr;gap:12px}.controls label{display:block;font-size:10px;text-transform:uppercase;color:var(--dim);letter-spacing:.09em;margin-bottom:6px}input[type=number]{width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;background:#091219;color:var(--text);font:inherit}input[type=range]{width:100%;accent-color:var(--mint)}button.action{border:1px solid #4e8279;border-radius:8px;background:#13352e;color:#dafff0;font:inherit;font-size:11px;font-weight:700;padding:12px 14px;cursor:pointer;letter-spacing:.04em}button.action:hover{background:#1c4e42}button.action.secondary{background:#161d28;border-color:#445461}button.action.warn{background:#362b1d;border-color:#9a7045}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.infobar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px}.tag{border:1px solid var(--line);color:var(--dim);border-radius:4px;padding:4px 7px;font-size:10px}.cells{display:grid;grid-template-columns:repeat(26,minmax(0,1fr));gap:4px}.cell{aspect-ratio:1/1;border:1px solid var(--band);border-radius:50%;background:color-mix(in srgb,var(--band) 13%,#07131a);cursor:pointer;min-width:0;padding:0;box-shadow:0 0 3px #090f12}.cell.alert{background:#ff756c;border-color:#ffa094;box-shadow:0 0 8px #ff756c55}.cell.clear{background:#46cc9a55;border-color:#58c99d}.cell.abstain{background:#3c4659;border-color:#8490a5}.cell.truefault{outline:1px solid #f7d374;outline-offset:1px}.cell.selected{outline:2px solid white;outline-offset:2px}.legend{display:flex;gap:12px;flex-wrap:wrap;color:var(--dim);font-size:10px;margin:12px 0 0}.legend span::before{content:'● ';color:var(--swatch)}.detail{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:13px}.detail div{font-size:11px;color:var(--dim)}.detail strong{display:block;color:var(--text);font-size:13px;margin-top:3px}.alerttext{color:var(--red)}.success{color:var(--mint)}.log{min-height:155px;max-height:175px;overflow:auto;display:flex;flex-direction:column;gap:4px}.logline{font-size:10px;color:var(--dim);overflow-wrap:anywhere}.logline.good{color:var(--mint)}.logline.bad{color:var(--red)}.logline.warn{color:var(--amber)}.results{margin-top:17px;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:18px}.smallnote{color:var(--dim);font-size:11px;margin-top:16px}.footer{margin-top:28px;border-top:1px solid var(--line);padding-top:18px;color:var(--dim);font-size:10px;line-height:1.8}strong{font-weight:600}@media(max-width:940px){.layout{grid-template-columns:1fr}.scene{height:270px}}@media(max-width:560px){main{padding:18px 12px 40px}.section{padding:14px}.meters{grid-template-columns:repeat(2,1fr)}.cells{gap:3px;grid-template-columns:repeat(20,minmax(0,1fr))}.metric b{font-size:17px}.detail{grid-template-columns:repeat(2,1fr)}.brandhead{font-size:26px}}
+</style></head><body><main>
+<header><div><div class="brand">ROOT0 / NULLRIDER / TRIATOMIC 184</div><h1 class="brandhead">THE <em>INFERENCE</em> OBSERVATORY</h1><div class="subline">365 symbolic cells · Tach −2 / Gyro 0 / Posi +3 · one read-only gate</div></div><div class="pill">EXPERIMENT V1 · SYNTHETIC SENSORS</div></header>
+<div class="layout"><div class="panel">
+  <div class="section"><div class="row" style="justify-content:space-between"><span class="kicker">Node 184 · 7.5° symbolic aperture</span><span class="tag">INFER = NO RENEWAL</span></div><canvas id="scene" class="scene" aria-label="Three rotating symbolic triatomic rings around Node 184"></canvas><div class="meters"><div class="metric"><small>Population</small><b id="population">365/365</b><small>Maintained</small></div><div class="metric"><small>Nonempty sensor pairs</small><b id="sensor">—</b><small>Readable cells</small></div><div class="metric"><small>Invariant</small><b id="crossing" style="font-size:15px">NO INFERENCE</b><small>Before/after fingerprint</small></div></div></div>
+  <div class="section"><span class="kicker">Laboratory controls</span><div class="controls" style="margin-top:12px"><div><label for="seed">World seed</label><input id="seed" type="number" value="184184" min="1" max="2000000000"></div><div><label for="missing">Missing sensor readings · <span id="missingLabel">25%</span></label><input id="missing" type="range" min="0" max="100" value="25" step="5"></div></div><div class="actions"><button class="action secondary" id="new">NEW WORLD</button><button class="action" id="infer">INFER VIA 184</button><button class="action warn" id="reveal">REVEAL TEST LABELS</button></div><div class="row" style="margin-top:15px;justify-content:space-between"><label><input type="checkbox" id="pause"> Pause orbit</label><span id="engineState" class="kicker">OBSERVING</span></div></div>
+  <div class="section"><div class="kicker">Gateway activity / non-mutating receipts</div><div class="log" id="log" style="margin-top:12px"></div></div>
+</div><div class="panel">
+  <div class="section"><div class="row" style="justify-content:space-between"><span class="kicker">Concurrent cells · 3×118 + 11</span><span class="tag">TRUTH <span id="truth">SEALED</span></span></div><div class="infobar" style="margin-top:12px"><span class="tag">TACH 118</span><span class="tag">GYRO 118</span><span class="tag">POSI 118</span><span class="tag">RESERVE 11</span></div><div class="cells" id="cellgrid" role="group" aria-label="Click a cell to inspect its observations"></div><div class="legend"><span style="--swatch:#e6a876">Tach</span><span style="--swatch:#64edc4">Gyro</span><span style="--swatch:#ae9bfb">Posi</span><span style="--swatch:#ff756c">Alert</span><span style="--swatch:#8490a5">Abstain</span></div></div>
+  <div class="section"><div class="row" style="justify-content:space-between"><div class="kicker">Selected cell / hidden truth separate</div><div class="big" id="cellid">184</div></div><div class="detail"><div>Branch<strong id="cellband">GYRO</strong></div><div>Engine<strong id="cellsign">0</strong></div><div>Age<strong id="cellage">—</strong></div><div>Alarm<strong id="cellalar">—</strong></div><div>Drift sensor<strong id="celldrift">—</strong></div><div>Posterior¹<strong id="cellposterior">—</strong></div><div>Decision<strong id="celldecision">WAITING</strong></div><div>Test label²<strong id="celltruth">HIDDEN</strong></div><div>Flags<strong id="alerts">—</strong></div></div><div class="meters" style="grid-template-columns:repeat(2,1fr);margin-top:15px"><div class="metric"><small>Decided coverage</small><b id="cover">—</b></div><div class="metric"><small>Brier²</small><b id="brier">—</b></div></div></div>
+  <div class="section"><div class="row" style="justify-content:space-between"><span class="kicker">Unseen-seed laboratory</span><span class="tag">40 WORLDS × 365</span></div><div class="actions"><button id="runbench" class="action">RUN HOLDOUT</button><button id="export" class="action secondary">EXPORT JSON</button></div><div id="bench" class="results" hidden><div id="benchlabel" class="kicker"></div><div class="detail"><div>Coverage<strong id="benchcoverage">—</strong></div><div>Alert precision<strong id="benchprecision">—</strong></div><div>Alert recall<strong id="benchrecall">—</strong></div><div>Posterior Brier<strong id="benchbrier">—</strong></div><div>Prior-only Brier<strong id="benchprior">—</strong></div></div></div></div>
+</div></div>
+<div class="footer">¹ Posterior probability under assumed, synthetic and conditionally independent alarm/drift likelihoods. Not empirically calibrated to hardware or biology. ² Hidden labels are available to the TEST HARNESS for evaluation, not to the INFER function; click reveal only after inference. Read-only refers to the inference call, not to the synthetic world setup that injects faults via Node 184. No external network, signing, Railway account or trained model required.<br><a href="../">← Triatomic Node 184 renewal controller</a> · <a href="../../nullrider-cruise/">NULLRIDER Cruise</a> · <a href="https://github.com/DavidWise01/solar-jetman">Source</a></div>
+</main><script>
+const ENG=(()=>{/* NULLRIDER TRIATOMIC 184 — symbolic homeostasis, no physical chemistry claims.
+ * The closure exports one entry point. All observations and mutations use gate 184.
+ * 3 x 118 address slots + 11 shared reserve = 365 positions.
+ */
+const NODE = 184;
+const COUNT = 365;
+const BANDS = Object.freeze([
+  Object.freeze({name:'TACH',time:-1,engine:-2,count:118}),
+  Object.freeze({name:'GYRO',time:0,engine:0,count:118}),
+  Object.freeze({name:'POSI',time:1,engine:3,count:118}),
+  Object.freeze({name:'RESERVE',time:0,engine:0,count:11}),
+]);
+const copy = value => JSON.parse(JSON.stringify(value));
+function fingerprint(cells) {
+  // Noncryptographic change indicator; never an authenticity signature.
+  let n=2166136261;
+  for(const c of cells){
+    for(const ch of `${c.id}:${c.version}:${c.age}:${c.health.toFixed(2)}:${+c.fault}|`){n=Math.imul(n^ch.charCodeAt(0),16777619)>>>0;}
+  }
+  return n.toString(16).padStart(8,'0');
+}
+function createTriatomic184() {
+  const cells=[];
+  for (let b=0;b<BANDS.length;b++) for(let slot=0;slot<BANDS[b].count;slot++) {
+    const id=cells.length+1;
+    const age=slot%17;
+    cells.push({id,band:BANDS[b].name,slot:slot+1,version:0,age,health:Number((99.5-age*.15).toFixed(2)),fault:false});
+  }
+  if(cells.length!==COUNT)throw Error('REGISTRY_MISMATCH');
+  let cycle=0, remainderTenths=0, retiredTotal=0, serial=0;
+  const seen=new Set(), ledger=[];
+  function status(){
+    const faulty=cells.filter(c=>c.fault).length;
+    const low=cells.filter(c=>c.health<85&&!c.fault).length;
+    return {node:NODE,cycle,occupied:cells.length,capacity:COUNT,fullness:100,
+      triatomic:[118,118,118],reserve:11,temporal:[-1,0,1],engine:[-2,0,3],
+      faults:faulty,lowHealth:low,healthy:COUNT-faulty-low,
+      retiredTotal,renewedTotal:retiredTotal,quotaRemainderTenths:remainderTenths,
+      verdict:faulty===0&&low===0&&cells.length===COUNT?'STABLE':'SERVICE_REQUIRED',
+      fingerprint:fingerprint(cells),last:ledger.length?copy(ledger.at(-1)):null,
+      logSize:ledger.length};
+  }
+  function record(type,tx,details){
+    const rec={node:NODE,serial:++serial,cycle,type,tx,details:copy(details),fingerprint:fingerprint(cells)};
+    ledger.push(rec);
+    return rec;
+  }
+  function runCycle(tx) {
+    cycle++;
+    // Fractional carry: exactly 73 retirements in 10 cycles (7.3 average).
+    let quota=7;
+    remainderTenths+=3;
+    if(remainderTenths>=10){quota++;remainderTenths-=10;}
+    for(const cell of cells){cell.age++;cell.health=Math.max(0,Number((cell.health-.15).toFixed(2)));}
+    const risk = c => (c.fault?1e6:0)+(100-c.health)*100+c.age*.01;
+    // Ensure all three concurrent branches can renew; no one branch owns the gate.
+    const selected=[];
+    for(const b of ['TACH','GYRO','POSI']){
+      const best=cells.filter(c=>c.band===b).sort((a,z)=>risk(z)-risk(a)||a.id-z.id)[0];
+      selected.push(best);
+    }
+    const chosen=new Set(selected.map(c=>c.id));
+    const others=cells.filter(c=>!chosen.has(c.id)).sort((a,z)=>risk(z)-risk(a)||a.id-z.id);
+    selected.push(...others.slice(0,quota-selected.length));
+    const retired=selected.map(c=>({id:c.id,band:c.band,version:c.version,health:c.health,fault:c.fault}));
+    for(const c of selected){c.version++;c.age=0;c.health=100;c.fault=false;}
+    retiredTotal+=quota;
+    const evt=record('RENEW',tx,{quota,retired,created:retired.map(c=>({id:c.id,version:c.version+1})),replaced:quota,
+       retained:COUNT-quota,occupied:COUNT,percentage:quota/COUNT*100});
+    return {event:evt,stats:status()};
+  }
+  function through184(packet){
+    if(!packet||packet.via!==NODE)return {accepted:false,error:'WRONG_GATE_EXPECTED_184'};
+    const {op,tx}=packet;
+    if(op==='VIEW')return {accepted:true,snapshot:{...status(),cells:copy(cells),ledger:copy(ledger)}};
+    if(typeof tx!=='string'||!tx.trim())return {accepted:false,error:'TX_REQUIRED'};
+    if(seen.has(tx))return {accepted:false,error:'REPLAY_BLOCKED',stats:status()};
+    if(op!=='RENEW'&&op!=='FAULT'&&op!=='RESEED')return {accepted:false,error:'UNKNOWN_OPERATION'};
+    if(op==='FAULT'&&(!Number.isInteger(packet.cell)||packet.cell<1||packet.cell>COUNT))
+      return {accepted:false,error:'INVALID_CELL_ID'};
+    seen.add(tx);
+    if(op==='RENEW')return {accepted:true,...runCycle(tx)};
+    if(op==='FAULT'){
+      const cell=cells[packet.cell-1];cell.fault=true;cell.health=0;
+      const event=record('FAULT',tx,{id:cell.id,band:cell.band});
+      return {accepted:true,event,stats:status()};
+    }
+    // Reseeding, if wanted, still records a transition; the receipt ledger is never erased.
+    for(const c of cells){c.version++;c.age=0;c.health=100;c.fault=false;}
+    cycle=0;remainderTenths=0;
+    const event=record('RESEED',tx,{preservedCapacity:COUNT});
+    return {accepted:true,event,stats:status()};
+  }
+  return Object.freeze({through184});
+}
+
+return {createTriatomic184};})();
+const INF=(()=>{/* NULLRIDER Node184 observer: read-only Bayesian inference under declared sensor assumptions.
+ * No access to private cell state, labels, mutation APIs, learned weights, or external data.
+ * Posterior scores are meaningful ONLY if the assumed signal likelihoods are accurate.
+ */
+const INFER_NODE = 184;
+const CELL_COUNT = 365;
+const SENSOR_MODEL = Object.freeze({
+  alarm: Object.freeze({sensitivity:0.82,falsePositiveRate:0.09}),
+  drift: Object.freeze({sensitivity:0.70,falsePositiveRate:0.20}),
+});
+const BANDS = new Set(['TACH','GYRO','POSI','RESERVE']);
+const clamp = (v,a,b) => Math.max(a,Math.min(b,v));
+function prior184(age,band){
+  return clamp(0.07 + 0.16*clamp(age,0,50)/50 + (band==='RESERVE'?0.025:0),0.02,0.35);
+}
+const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
+function validateObservation(o){
+  if(!o||typeof o!=='object'||Array.isArray(o))return 'BAD_OBSERVATION';
+  const keys=['id','band','age','alarm','drift'];
+  if(Object.keys(o).some(k=>!keys.includes(k)))return 'UNEXPECTED_FIELD_OR_LABEL_LEAK';
+  if(!Number.isInteger(o.id)||o.id<1||o.id>CELL_COUNT)return 'INVALID_CELL_ID';
+  if(!BANDS.has(o.band))return 'INVALID_BAND';
+  if(!Number.isInteger(o.age)||o.age<0||o.age>50)return 'INVALID_AGE';
+  if(!own(o,'alarm')||!own(o,'drift'))return 'MISSING_SENSOR_FIELDS';
+  if(![true,false,null].includes(o.alarm)||![true,false,null].includes(o.drift))return 'INVALID_SENSOR';
+  return null;
+}
+function predict(o,high,low){
+  const prior=prior184(o.age,o.band);
+  const sensors=['alarm','drift'].filter(k=>o[k]!==null);
+  if(!sensors.length)return {id:o.id,band:o.band,age:o.age,alarm:o.alarm,drift:o.drift,posterior:null,decision:'ABSTAIN',reason:'NO_EVIDENCE'};
+  let odds=prior/(1-prior);
+  for(const key of sensors){const m=SENSOR_MODEL[key];odds*=o[key]?m.sensitivity/m.falsePositiveRate:(1-m.sensitivity)/(1-m.falsePositiveRate);}
+  const posterior=odds/(1+odds);
+  const decision=posterior>=high?'ALERT':posterior<=low?'CLEAR':'ABSTAIN';
+  return {id:o.id,band:o.band,age:o.age,alarm:o.alarm,drift:o.drift,
+    posterior:Number(posterior.toFixed(8)),decision,reason:decision==='ABSTAIN'?'INSUFFICIENT_CONFIDENCE':'MODEL_THRESHOLD',sensors:sensors.length};
+}
+function infer184(packet){
+  if(!packet||packet.via!==INFER_NODE)return {accepted:false,error:'WRONG_GATE_EXPECTED_184'};
+  if(packet.op!=='INFER')return {accepted:false,error:'INFERENCE_READ_ONLY'};
+  if(!Array.isArray(packet.observations)||packet.observations.length<1||packet.observations.length>CELL_COUNT)
+    return {accepted:false,error:'INVALID_OBSERVATION_SET'};
+  const high=packet.high??0.8,low=packet.low??0.08;
+  if(typeof high!=='number'||typeof low!=='number'||!Number.isFinite(high)||!Number.isFinite(low)||low<0||high>1||low>=high)return {accepted:false,error:'BAD_THRESHOLDS'};
+  const ids=new Set();
+  for(const obs of packet.observations){
+    const problem=validateObservation(obs);
+    if(problem)return {accepted:false,error:problem};
+    if(ids.has(obs.id))return {accepted:false,error:'DUPLICATE_CELL_ID'};
+    ids.add(obs.id);
+  }
+  const rows=packet.observations.map(o=>predict(o,high,low));
+  const counts={ALERT:0,CLEAR:0,ABSTAIN:0};for(const r of rows)counts[r.decision]++;
+  return {accepted:true,node:INFER_NODE,op:'INFER',readonly:true,model:'BAYES_INDEPENDENT_SYNTHETIC_SENSORS_V1',
+    thresholds:{high,low},count:rows.length,counts,rows};
+}
+
+return {infer184,prior184,SENSOR_MODEL};})();
+const LAB=(()=>{const {createTriatomic184}=ENG;const {prior184,SENSOR_MODEL,infer184}=INF;/* Reproducible synthetic sensor laboratory. Hidden truth is separated from INFER packet. */
+
+
+function random184(seed){let x=seed>>>0;if(!x)x=1;return ()=>{x^=x<<13;x^=x>>>17;x^=x<<5;return (x>>>0)/4294967296;};}
+function syntheticTrial(seed=184,missingFraction=.25){
+  if(!Number.isInteger(seed)||seed<1||seed>2_000_000_000)throw Error('BAD_SEED');
+  if(!Number.isFinite(missingFraction)||missingFraction<0||missingFraction>1)throw Error('BAD_MISSING_RATE');
+  const rand=random184(seed),core=createTriatomic184();
+  const original=core.through184({via:184,op:'VIEW'}).snapshot;
+  const observations=[],truth=new Map();let faultCount=0;
+  for(const c of original.cells){
+    const fault=rand()<prior184(c.age,c.band);
+    truth.set(c.id,fault);
+    if(fault){faultCount++;const f=core.through184({via:184,op:'FAULT',cell:c.id,tx:`fixture-${seed}-fault-${c.id}`});if(!f.accepted)throw Error('FAULT_ROUTE_FAILED');}
+    const alarm=rand()<(fault?SENSOR_MODEL.alarm.sensitivity:SENSOR_MODEL.alarm.falsePositiveRate);
+    const drift=rand()<(fault?SENSOR_MODEL.drift.sensitivity:SENSOR_MODEL.drift.falsePositiveRate);
+    observations.push({id:c.id,band:c.band,age:c.age,
+      alarm:rand()<missingFraction?null:alarm,
+      drift:rand()<missingFraction?null:drift});
+  }
+  const post=core.through184({via:184,op:'VIEW'}).snapshot;
+  if(post.faults!==faultCount)throw Error('TRUTH_GATE_MISMATCH');
+  return {seed,missingFraction,observations,truth,core,faultCount};
+}
+function score184(result,truth){
+  if(!result.accepted)throw Error('INFERENCE_REJECTED');
+  let alert=0,alertCorrect=0,clear=0,clearCorrect=0,abstain=0,correct=0,brierSum=0,brierN=0,baselineSum=0,positive=0,alertsFound=0;
+  const buckets=Array.from({length:10},()=>({n:0,p:0,y:0}));
+  for(const r of result.rows){
+    const y=truth.get(r.id)?1:0;positive+=y;
+    if(r.posterior!==null){
+      brierSum+=(r.posterior-y)**2;baselineSum+=(prior184(r.age,r.band)-y)**2;brierN++;
+      const b=buckets[Math.min(9,Math.floor(r.posterior*10))];b.n++;b.p+=r.posterior;b.y+=y;
+    }
+    if(r.decision==='ALERT'){alert++;alertCorrect+=y;alertsFound+=y;correct+=y;}
+    else if(r.decision==='CLEAR'){clear++;clearCorrect+=1-y;correct+=1-y;}
+    else abstain++;
+  }
+  let ece=0;
+  for(const b of buckets)if(b.n)ece+=b.n/result.count*Math.abs(b.p/b.n-b.y/b.n);
+  return {count:result.count,truthFaults:positive,alerts:alert,clears:clear,abstains:abstain,
+    coverage:(alert+clear)/result.count,decidedAccuracy:alert+clear?correct/(alert+clear):null,
+    alertPrecision:alert?alertCorrect/alert:null,clearSpecificity:clear?clearCorrect/clear:null,
+    alertRecall:positive?alertsFound/positive:null,brier:brierN?brierSum/brierN:null,priorBrier:brierN?baselineSum/brierN:null,
+    eceObserved:ece,scored:brierN};
+}
+function syntheticBenchmark(startSeed=20801,trials=40,missingFraction=.25,high=.8,low=.08){
+  const rows=[];
+  for(let i=0;i<trials;i++){
+    const t=syntheticTrial(startSeed+i,missingFraction);
+    const p=infer184({via:184,op:'INFER',observations:t.observations,high,low});
+    rows.push({seed:t.seed,...score184(p,t.truth)});
+  }
+  const total=k=>rows.reduce((s,r)=>s+r[k],0);
+  const weighted=(k,w)=>{const denom=total(w);return denom?rows.reduce((s,r)=>s+(r[k]??0)*r[w],0)/denom:null;};
+  return {startSeed,trials,missingFraction,thresholds:{high,low},totalCells:total('count'),groundTruthFaults:total('truthFaults'),
+    coverage:(total('alerts')+total('clears'))/total('count'),
+    decidedAccuracy:weighted('decidedAccuracy','count')===null?null:rows.reduce((s,r)=>s+(r.decidedAccuracy??0)*(r.alerts+r.clears),0)/(total('alerts')+total('clears')),
+    alertPrecision:total('alerts')?rows.reduce((s,r)=>s+(r.alertPrecision??0)*r.alerts,0)/total('alerts'):null,
+    alertRecall:total('truthFaults')?rows.reduce((s,r)=>s+(r.alertRecall??0)*r.truthFaults,0)/total('truthFaults'):null,
+    brier:weighted('brier','scored'),priorBrier:weighted('priorBrier','scored'),
+    missingNoSignal:total('count')-total('scored'),rows};
+}
+
+return {syntheticTrial,score184,syntheticBenchmark};})();
+'use strict';
+const el=id=>document.getElementById(id);
+let trial=null, result=null, revealed=false,selected=184,lastBench=null,phase=0;
+const bands={TACH:'#f4b163',GYRO:'#5de0d1',POSI:'#a8a3ff',RESERVE:'#e8cf83'};
+const fmt=n=>n===null||n===undefined?'—':Number(n).toFixed(2);
+const percent=n=>n===null||n===undefined?'—':(n*100).toFixed(1)+'%';
+const write=(id,v)=>{el(id).textContent=String(v);};
+const addLog=(message,tone='neutral')=>{
+  const line=document.createElement('div');line.className='logline '+tone;
+  line.textContent='['+new Date().toLocaleTimeString()+']  '+message;
+  el('log').prepend(line);while(el('log').children.length>9)el('log').lastElementChild.remove();
+};
+function initialize(){
+  const seed=Number(el('seed').value), missing=Number(el('missing').value)/100;
+  try{trial=LAB.syntheticTrial(seed,missing);result=null;revealed=false;lastBench=null;selected=184;el('bench').hidden=true;
+    write('crossing','NO INFERENCE');write('cover','—');write('alerts','—');write('brier','—');write('truth','SEALED');write('engineState','OBSERVING');
+    addLog(`NODE 184 → new synthetic world #${seed}; ${Math.round(missing*100)}% sensor dropout`);
+    drawCells();readSelected();drawStats();
+  }catch(e){addLog('REJECT: '+e.message,'bad');}
+}
+function runInference(){
+  if(!trial)return;
+  const before=trial.core.through184({via:184,op:'VIEW'}).snapshot;
+  result=INF.infer184({via:184,op:'INFER',observations:trial.observations,high:0.80,low:0.08});
+  const after=trial.core.through184({via:184,op:'VIEW'}).snapshot;
+  if(!result.accepted){addLog('REJECT: '+result.error,'bad');return;}
+  const preserved=before.fingerprint===after.fingerprint&&before.logSize===after.logSize&&before.cycle===after.cycle;
+  write('crossing',preserved?'READ-ONLY PASS':'MUTATION DETECTED');
+  write('engineState',preserved?'SCALAR 0 PRESERVED':'STOP');
+  write('cover',percent((result.counts.ALERT+result.counts.CLEAR)/result.count));
+  write('alerts',result.counts.ALERT);
+  write('brier','HIDDEN');
+  addLog(`INFER via 184 :: ${result.counts.ALERT} alerts · ${result.counts.CLEAR} clears · ${result.counts.ABSTAIN} abstentions; preserved ${preserved?'YES':'NO'}`,preserved?'good':'bad');
+  drawCells();readSelected();drawStats();
+}
+function reveal(){
+  if(!result){addLog('Run INFER before revealing truth','bad');return;}
+  revealed=true;const s=LAB.score184(result,trial.truth);
+  write('truth','REVEALED');write('brier',fmt(s.brier));
+  addLog(`Test labels revealed: ${s.truthFaults} synthetic faults; alert precision ${percent(s.alertPrecision)}, recall ${percent(s.alertRecall)}`,'warn');
+  drawCells();readSelected();drawStats();
+}
+function benchmark(){
+  const t0=performance.now();const miss=Number(el('missing').value)/100;
+  lastBench=LAB.syntheticBenchmark(20801,40,miss);
+  const ms=Math.round(performance.now()-t0);
+  write('benchlabel',`40 UNSEEN-SEED WORLDS · ${lastBench.totalCells.toLocaleString()} CELLS · ${ms}ms`);
+  write('benchcoverage',percent(lastBench.coverage));write('benchprecision',percent(lastBench.alertPrecision));
+  write('benchrecall',percent(lastBench.alertRecall));write('benchbrier',fmt(lastBench.brier));
+  write('benchprior',fmt(lastBench.priorBrier));
+  el('bench').hidden=false;
+  addLog(`HOLDOUT → brier ${fmt(lastBench.brier)} vs age-only ${fmt(lastBench.priorBrier)}, recall ${percent(lastBench.alertRecall)}`,'good');
+}
+function readSelected(){
+  if(!trial)return;
+  const o=trial.observations[selected-1];const r=result?.rows.find(x=>x.id===selected);
+  write('cellid',String(selected).padStart(3,'0'));
+  write('cellband',o.band);write('cellsign',o.band==='TACH'?'−2':o.band==='GYRO'?'0':o.band==='POSI'?'+3':'RESERVE');
+  write('cellage',o.age);
+  write('cellalar',o.alarm===null?'MISSING':o.alarm?'ALARM':'QUIET');
+  write('celldrift',o.drift===null?'MISSING':o.drift?'DRIFT':'NORMAL');
+  write('cellposterior',r?.posterior===null?'UNKNOWN':r?percent(r.posterior):'NOT RUN');
+  write('celldecision',r?.decision??'WAITING');
+  write('celltruth',revealed?(trial.truth.get(selected)?'FAULT':'HEALTHY'):'HIDDEN');
+}
+function drawCells(){
+  if(!trial)return;
+  const elGrid=el('cellgrid');elGrid.replaceChildren();
+  for(const o of trial.observations){
+    const r=result?.rows[o.id-1];
+    const b=document.createElement('button');b.type='button';b.className='cell';
+    if(r)b.classList.add(r.decision.toLowerCase());
+    if(revealed&&trial.truth.get(o.id))b.classList.add('truefault');
+    if(o.id===selected)b.classList.add('selected');
+    b.style.setProperty('--band',bands[o.band]);b.title=`${o.band} cell ${o.id}`;
+    b.setAttribute('aria-label',`Inspect ${o.band} cell ${o.id}`);
+    b.onclick=()=>{selected=o.id;readSelected();drawCells();};
+    elGrid.appendChild(b);
+  }
+}
+function drawStats(){
+  const counts=trial.observations.reduce((a,o)=>(a[o.band]=(a[o.band]??0)+1,a),{});
+  write('population',Object.values(counts).reduce((a,b)=>a+b,0)+'/365');
+  write('sensor',`${trial.observations.filter(o=>o.alarm!==null||o.drift!==null).length}/365`);
+}
+function drawOrbit(t){
+  const c=el('scene'),cx=c.getContext('2d');if(!cx)return;
+  const rect=c.getBoundingClientRect(),w=Math.round(rect.width),h=Math.round(rect.height),dpr=Math.min(2,devicePixelRatio||1);
+  if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);}
+  cx.setTransform(dpr,0,0,dpr,0,0);cx.clearRect(0,0,w,h);
+  const centerX=w/2,centerY=h/2,rr=Math.min(w*.26,h*.40);
+  const values=[{name:'TACH',r:rr*1.45,color:bands.TACH,dr:1},{name:'GYRO',r:rr*1.10,color:bands.GYRO,dr:-.65},{name:'POSI',r:rr*.75,color:bands.POSI,dr:1.25}];
+  for(const ring of values){
+    cx.save();cx.translate(centerX,centerY);cx.rotate(phase*ring.dr);
+    cx.strokeStyle=ring.color;cx.globalAlpha=.55;cx.lineWidth=1.5;cx.beginPath();cx.ellipse(0,0,ring.r,ring.r*.40,0,0,Math.PI*2);cx.stroke();
+    for(let i=0;i<19;i++){const a=i/19*Math.PI*2;cx.fillStyle=ring.color;cx.globalAlpha=.30+i/19*.55;
+      cx.beginPath();cx.arc(ring.r*Math.cos(a),ring.r*.4*Math.sin(a),i%5===0?3.3:1.4,0,Math.PI*2);cx.fill();}
+    cx.restore();
+  }
+  cx.strokeStyle='#e7e7e7';cx.globalAlpha=.4;cx.beginPath();cx.moveTo(centerX-rr*1.55,centerY);cx.lineTo(centerX+rr*1.55,centerY);cx.stroke();
+  cx.globalAlpha=1;cx.beginPath();cx.arc(centerX,centerY,22,0,Math.PI*2);cx.fillStyle='#0c211c';cx.fill();cx.strokeStyle='#b7f4d6';cx.lineWidth=1.2;cx.stroke();
+  cx.textAlign='center';cx.fillStyle='#e0ffee';cx.font='700 12px monospace';cx.fillText('184',centerX,centerY+4);
+  cx.fillStyle='#768e91';cx.font='11px monospace';cx.fillText('SCALAR 0',centerX,centerY+43);
+  if(!el('pause').checked)phase+=.003;
+  requestAnimationFrame(drawOrbit);
+}
+el('seed').addEventListener('change',initialize);el('missing').addEventListener('input',()=>write('missingLabel',el('missing').value+'%'));
+el('new').addEventListener('click',initialize);el('infer').addEventListener('click',runInference);el('reveal').addEventListener('click',reveal);
+el('runbench').addEventListener('click',benchmark);
+el('export').addEventListener('click',()=>{if(!lastBench){addLog('Run the benchmark before exporting','bad');return;}const text=JSON.stringify({schema:'nullrider.184.infer.v1',benchmark:lastBench,source:'SYNTHETIC HOLDOUT',timestamp:new Date().toISOString()},null,2);const file=new Blob([text],{type:'application/json'});const url=URL.createObjectURL(file);const a=document.createElement('a');a.href=url;a.download='node184-inference-synthetic-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);});
+initialize();requestAnimationFrame(drawOrbit);
+
+</script></body></html>
