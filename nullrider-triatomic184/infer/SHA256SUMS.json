@@ -1,0 +1,79 @@
+{
+  "schema": "nullrider.node184.infer.v1",
+  "date": "2026-10-16",
+  "model": "synthetic bayesian read-only observer",
+  "files": {
+    "nullrider-triatomic184/infer/index.html": {
+      "sha256": "b2dc87e4c0ce94abdf48629851a296e8668c65ed6709cc8e43bb969852bf6e35",
+      "bytes": 30322
+    },
+    "nullrider-triatomic184/infer/infer.mjs": {
+      "sha256": "4c5cbc5addf4eef2990d690d790cdddb49b534b39ac74279ef29b387e0f479e0",
+      "bytes": 3408
+    },
+    "nullrider-triatomic184/infer/synthetic.mjs": {
+      "sha256": "9ce93f65ba2a1fa4524c8a857253a8dd719115bfec9b8347392fb4c32e863aec",
+      "bytes": 4135
+    },
+    "nullrider-triatomic184/infer/app.js": {
+      "sha256": "db54dc32dbc1a9bb84052265c710bd976db342b0352fdb1281bc277e4c29d2ab",
+      "bytes": 7602
+    },
+    "nullrider-triatomic184/infer/index.template.html": {
+      "sha256": "1e9ad951bc7477ff72c5e69f5854f4d924bfc00001947eb36d24a4e120c0cf81",
+      "bytes": 10278
+    },
+    "nullrider-triatomic184/infer/build.py": {
+      "sha256": "b0c1f7f09356f9932533f10d50cba31ac5720498dfd6ec81b4aa034022fbecaf",
+      "bytes": 1005
+    },
+    "nullrider-triatomic184/infer/infer.test.mjs": {
+      "sha256": "c532b40a45cbdce091f9968979762647fad7b0ea49b28218c28fb929dce6544e",
+      "bytes": 5359
+    },
+    "nullrider-triatomic184/infer/browser_test.py": {
+      "sha256": "6c72a13d88ed4005de86b2b06f5411ad3437d465c794202465903d10bf03dc87",
+      "bytes": 3850
+    },
+    "nullrider-triatomic184/infer/benchmark.mjs": {
+      "sha256": "dace7c9eded9e3e4ac83dcd47bcf28bd529762e2df32e42484145251ba620150",
+      "bytes": 1658
+    },
+    "nullrider-triatomic184/infer/results.json": {
+      "sha256": "6fedadd5097dd84e7936b6478131682e99d4a94b9e2d153a3932100f34feb64d",
+      "bytes": 2633
+    },
+    "nullrider-triatomic184/infer/results.csv": {
+      "sha256": "6e1680eeae9bfbe73ce61d1cc1371b64c8acc59b96e33d35638d23d72f675d0f",
+      "bytes": 567
+    },
+    "nullrider-triatomic184/infer/README.md": {
+      "sha256": "a6fd316aafcb8f9a6eb3ece26fb271ae3858c22c0057f0153dfd84db440488ba",
+      "bytes": 4020
+    },
+    "nullrider-triatomic184/infer/BENCHMARK.md": {
+      "sha256": "47ac7534a3ebb71078393b66f48ac36b06de35077d88173bf3d77a4a26fb8593",
+      "bytes": 1442
+    },
+    "nullrider-triatomic184/infer/browser_results.json": {
+      "sha256": "b41b698d2df5954bc40f5196cbdce81f902ac2829154682e4a7ac9f49d9437a2",
+      "bytes": 3619
+    },
+    "nullrider-triatomic184/infer/node_test.txt": {
+      "sha256": "71cdea0055a1b182c6a20d698beb9a3762640cf9803bd5fc2e1d6e041ab7bd7c",
+      "bytes": 4193
+    },
+    "nullrider-triatomic184/infer/desktop.png": {
+      "sha256": "2f1d1f57540f96f715d4681e63fd487aebfc4879c7ceb93a1bbcd42e95b13f0d",
+      "bytes": 601010
+    },
+    "nullrider-triatomic184/infer/mobile.png": {
+      "sha256": "ef6adb5a17bdfbdd47c849f60ad363ab36577bd4e05e6cffb799ab9500a64310",
+      "bytes": 408800
+    },
+    "nullrider-triatomic184/engine.mjs": {
+      "sha256": "095f1f79a622820b54c9376bbc287af91b1e90563988fa6b3cc21dfce2a0d9fb",
+      "bytes": 4855
+    }
+  }
+}
