@@ -1,0 +1,149 @@
+{
+  "OPPOSED": {
+    "mode": "OPPOSED",
+    "calibration": {
+      "worlds": 24,
+      "seedRange": [
+        310000,
+        310023
+      ],
+      "version": "NODE184_PHASE_ADAPTIVE_V2",
+      "selected": "PHASE_OPPOSED",
+      "referenceWorlds": 24,
+      "referenceDigest": "b6c23836510965f221c0cff11d8463c687f297836390af3d4ba50cf32ec497fd",
+      "calibrationBrier": {
+        "BASELINE": 0.05584899721368385,
+        "PHASE_INVARIANT": 0.05753483563469642,
+        "PHASE_OPPOSED": 0.0422197828949637
+      },
+      "minimumMargin": 0.001,
+      "confidenceRule": "NORMAL_95_CI_LOWER_ABOVE_MARGIN",
+      "realSensorValidated": false
+    },
+    "test": {
+      "worlds": 100,
+      "seedRange": [
+        460000,
+        460099
+      ],
+      "cells": 36500,
+      "quota": 730,
+      "faults": 3546,
+      "hits": {
+        "adaptive": 687,
+        "rigid": 687,
+        "stationary": 626
+      },
+      "precision": {
+        "adaptive": 0.9410958904109589,
+        "rigid": 0.9410958904109589,
+        "stationary": 0.8575342465753425
+      },
+      "brier": {
+        "adaptive": 0.043607359883378244,
+        "rigid": 0.043607359883378244,
+        "stationary": 0.05544260801499326,
+        "base": 0.05765779566754418
+      },
+      "populationPreserved": true
+    }
+  },
+  "NULL": {
+    "mode": "NULL",
+    "calibration": {
+      "worlds": 24,
+      "seedRange": [
+        310000,
+        310023
+      ],
+      "version": "NODE184_PHASE_ADAPTIVE_V2",
+      "selected": "BASELINE",
+      "referenceWorlds": 24,
+      "referenceDigest": "b6c23836510965f221c0cff11d8463c687f297836390af3d4ba50cf32ec497fd",
+      "calibrationBrier": {
+        "BASELINE": 0.05584899721368385,
+        "PHASE_INVARIANT": 0.05753483563469642,
+        "PHASE_OPPOSED": 0.06892417155886278
+      },
+      "minimumMargin": 0.001,
+      "confidenceRule": "NORMAL_95_CI_LOWER_ABOVE_MARGIN",
+      "realSensorValidated": false
+    },
+    "test": {
+      "worlds": 100,
+      "seedRange": [
+        460000,
+        460099
+      ],
+      "cells": 36500,
+      "quota": 730,
+      "faults": 3546,
+      "hits": {
+        "adaptive": 577,
+        "rigid": 475,
+        "stationary": 570
+      },
+      "precision": {
+        "adaptive": 0.7904109589041096,
+        "rigid": 0.6506849315068494,
+        "stationary": 0.7808219178082192
+      },
+      "brier": {
+        "adaptive": 0.05765779566754418,
+        "rigid": 0.07095742457939996,
+        "stationary": 0.05950926428902707,
+        "base": 0.05765779566754418
+      },
+      "populationPreserved": true
+    }
+  },
+  "INVARIANT": {
+    "mode": "INVARIANT",
+    "calibration": {
+      "worlds": 24,
+      "seedRange": [
+        310000,
+        310023
+      ],
+      "version": "NODE184_PHASE_ADAPTIVE_V2",
+      "selected": "PHASE_INVARIANT",
+      "referenceWorlds": 24,
+      "referenceDigest": "b6c23836510965f221c0cff11d8463c687f297836390af3d4ba50cf32ec497fd",
+      "calibrationBrier": {
+        "BASELINE": 0.05584899721368385,
+        "PHASE_INVARIANT": 0.053644307320063346,
+        "PHASE_OPPOSED": 0.06892417155886278
+      },
+      "minimumMargin": 0.001,
+      "confidenceRule": "NORMAL_95_CI_LOWER_ABOVE_MARGIN",
+      "realSensorValidated": false
+    },
+    "test": {
+      "worlds": 100,
+      "seedRange": [
+        460000,
+        460099
+      ],
+      "cells": 36500,
+      "quota": 730,
+      "faults": 3546,
+      "hits": {
+        "adaptive": 626,
+        "rigid": 475,
+        "stationary": 626
+      },
+      "precision": {
+        "adaptive": 0.8575342465753425,
+        "rigid": 0.6506849315068494,
+        "stationary": 0.8575342465753425
+      },
+      "brier": {
+        "adaptive": 0.05544260801499326,
+        "rigid": 0.07095742457939996,
+        "stationary": 0.05544260801499326,
+        "base": 0.05765779566754418
+      },
+      "populationPreserved": true
+    }
+  }
+}
