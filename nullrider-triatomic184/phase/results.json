@@ -1,0 +1,164 @@
+{
+  "config": {
+    "worlds": 100,
+    "startSeed": 271840,
+    "missingFraction": 0.25,
+    "amplitude": 0.6,
+    "sigmaBackground": 1.1,
+    "sigmaNoise": 0.6,
+    "quotaCycles": 10
+  },
+  "quotasFirst10": [
+    7,
+    7,
+    7,
+    8,
+    7,
+    7,
+    8,
+    7,
+    7,
+    8
+  ],
+  "gates": {
+    "at0": {
+      "innerDeg": 0,
+      "outerDeg": 0,
+      "relativeDeg": 0,
+      "aligned": true
+    },
+    "at180": {
+      "innerDeg": 180,
+      "outerDeg": 180,
+      "relativeDeg": 0,
+      "aligned": true
+    },
+    "at90": {
+      "innerDeg": 90,
+      "outerDeg": 270,
+      "relativeDeg": -180,
+      "aligned": false
+    }
+  },
+  "main": {
+    "worlds": 100,
+    "cells": 36500,
+    "truthFaults": 3507,
+    "brier": {
+      "base": 0.05630319730891272,
+      "stationary": 0.05427980736918361,
+      "rotating": 0.042432511971732235,
+      "absoluteImprovement": 0.011847295397451371,
+      "CI95": [
+        0.010846486895453207,
+        0.012848103899449535
+      ]
+    },
+    "equalBudgetTop8": {
+      "slots": 800,
+      "stationaryHits": 664,
+      "rotatingHits": 758,
+      "precisionStationary": 0.83,
+      "precisionRotating": 0.9475,
+      "recallStationary": 0.18933561448531508,
+      "recallRotating": 0.2161391502708868,
+      "extraHitsPerWorld": 0.94,
+      "extraHitsCI95": [
+        0.7300073536641066,
+        1.1499926463358932
+      ]
+    },
+    "exactTwoPercentBudget": {
+      "totalSlots": 730,
+      "stationaryHits": 608,
+      "rotatingHits": 695,
+      "stationaryPrecision": 0.8328767123287671,
+      "rotatingPrecision": 0.952054794520548,
+      "stationaryRecall": 0.17336755061305958,
+      "rotatingRecall": 0.19817507841459936,
+      "improvementInHits": 87
+    },
+    "populationPreserved": true
+  },
+  "nullControl": {
+    "worlds": 100,
+    "cells": 36500,
+    "truthFaults": 3507,
+    "brier": {
+      "base": 0.05630319730891272,
+      "stationary": 0.05630319730891272,
+      "rotating": 0.05630319730891272,
+      "absoluteImprovement": 0,
+      "CI95": [
+        0,
+        0
+      ]
+    },
+    "equalBudgetTop8": {
+      "slots": 800,
+      "stationaryHits": 635,
+      "rotatingHits": 635,
+      "precisionStationary": 0.79375,
+      "precisionRotating": 0.79375,
+      "recallStationary": 0.18106643855146848,
+      "recallRotating": 0.18106643855146848,
+      "extraHitsPerWorld": 0,
+      "extraHitsCI95": [
+        0,
+        0
+      ]
+    },
+    "exactTwoPercentBudget": {
+      "totalSlots": 730,
+      "stationaryHits": 579,
+      "rotatingHits": 579,
+      "stationaryPrecision": 0.7931506849315069,
+      "rotatingPrecision": 0.7931506849315069,
+      "stationaryRecall": 0.165098374679213,
+      "rotatingRecall": 0.165098374679213,
+      "improvementInHits": 0
+    },
+    "populationPreserved": true
+  },
+  "assumptionViolation": {
+    "worlds": 100,
+    "cells": 36500,
+    "truthFaults": 3507,
+    "brier": {
+      "base": 0.05630319730891272,
+      "stationary": 0.05427980736918361,
+      "rotating": 0.06945999009815187,
+      "absoluteImprovement": -0.015180182728968268,
+      "CI95": [
+        -0.016221226700572904,
+        -0.014139138757363631
+      ]
+    },
+    "equalBudgetTop8": {
+      "slots": 800,
+      "stationaryHits": 664,
+      "rotatingHits": 533,
+      "precisionStationary": 0.83,
+      "precisionRotating": 0.66625,
+      "recallStationary": 0.18933561448531508,
+      "recallRotating": 0.151981750784146,
+      "extraHitsPerWorld": -1.31,
+      "extraHitsCI95": [
+        -1.6017742007827702,
+        -1.0182257992172299
+      ]
+    },
+    "exactTwoPercentBudget": {
+      "totalSlots": 730,
+      "stationaryHits": 608,
+      "rotatingHits": 485,
+      "stationaryPrecision": 0.8328767123287671,
+      "rotatingPrecision": 0.6643835616438356,
+      "stationaryRecall": 0.17336755061305958,
+      "rotatingRecall": 0.13829483889364128,
+      "improvementInHits": -123
+    },
+    "populationPreserved": true
+  },
+  "runtimeMs": 3610.274296
+}
