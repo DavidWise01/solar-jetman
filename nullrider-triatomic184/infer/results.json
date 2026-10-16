@@ -1,0 +1,85 @@
+{
+  "experiment": "NULLRIDER NODE184 READ-ONLY SYNTHETIC INFERENCE V1",
+  "benchmark": "40 independent holdout-world seeds 20801..20840 per missing-data condition; 365 cells each",
+  "source": "Unmodified ../engine.mjs for state, synthetic.mjs for ground truth and noisy observations",
+  "scoring": "Brier score vs age-only prior; precision/recall of high-confidence alerts, selective accuracy and coverage",
+  "assumptions": "Synthetic conditionally independent sensor likelihoods; prior matches synthetic generator. No training, pretrained weights, quantum/biological measurement, or real sensor calibration.",
+  "scenarios": [
+    {
+      "missingFraction": 0,
+      "elapsedMs": 513.49,
+      "startSeed": 20801,
+      "trials": 40,
+      "thresholds": {
+        "high": 0.8,
+        "low": 0.08
+      },
+      "totalCells": 14600,
+      "groundTruthFaults": 1420,
+      "coverage": 0.8165068493150685,
+      "decidedAccuracy": 0.9804546598439728,
+      "alertPrecision": 0.8256578947368421,
+      "alertRecall": 0.17676056338028168,
+      "brier": 0.046331570205385385,
+      "priorBrier": 0.08745840252054785,
+      "missingNoSignal": 0
+    },
+    {
+      "missingFraction": 0.25,
+      "elapsedMs": 487.61,
+      "startSeed": 20801,
+      "trials": 40,
+      "thresholds": {
+        "high": 0.8,
+        "low": 0.08
+      },
+      "totalCells": 14600,
+      "groundTruthFaults": 1420,
+      "coverage": 0.7578767123287671,
+      "decidedAccuracy": 0.9770447356529598,
+      "alertPrecision": 0.8192090395480226,
+      "alertRecall": 0.10211267605633803,
+      "brier": 0.0537768773579918,
+      "priorBrier": 0.08646587623994138,
+      "missingNoSignal": 930
+    },
+    {
+      "missingFraction": 0.5,
+      "elapsedMs": 418.51,
+      "startSeed": 20801,
+      "trials": 40,
+      "thresholds": {
+        "high": 0.8,
+        "low": 0.08
+      },
+      "totalCells": 14600,
+      "groundTruthFaults": 1420,
+      "coverage": 0.6028767123287672,
+      "decidedAccuracy": 0.9744376278118609,
+      "alertPrecision": 0.8227848101265823,
+      "alertRecall": 0.045774647887323945,
+      "brier": 0.05920237160499268,
+      "priorBrier": 0.08615860126966694,
+      "missingNoSignal": 3668
+    },
+    {
+      "missingFraction": 1,
+      "elapsedMs": 397.63,
+      "startSeed": 20801,
+      "trials": 40,
+      "thresholds": {
+        "high": 0.8,
+        "low": 0.08
+      },
+      "totalCells": 14600,
+      "groundTruthFaults": 1420,
+      "coverage": 0,
+      "decidedAccuracy": null,
+      "alertPrecision": null,
+      "alertRecall": 0,
+      "brier": null,
+      "priorBrier": null,
+      "missingNoSignal": 14600
+    }
+  ]
+}
