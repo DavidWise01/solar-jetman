@@ -1,0 +1,185 @@
+{
+  "title": "NULLRIDER Node 184 deterministic-policy and partial-observation inference benchmark",
+  "date_utc": "2026-10-16T15:03:09.989Z",
+  "implementation": "Existing engine.mjs unchanged",
+  "environment": {
+    "node": "v22.16.0",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "constraints": {
+    "gateway": 184,
+    "capacity": 365,
+    "bands": [
+      118,
+      118,
+      118,
+      11
+    ],
+    "renew_per_10_cycles": 73,
+    "partial_observation_masked_fields": [
+      "fault",
+      "health"
+    ],
+    "ground_truth": "Engine chosen retirement IDs"
+  },
+  "definitions": {
+    "full_policy": "White-box deterministic lookahead of known engine ranking; not machine learning",
+    "health_age_proxy": "Estimator uses health+age but not explicit fault flag",
+    "masked": "10%, 25%, or 50% of cells hide health/fault; hidden health approximated from age",
+    "age_only": "Estimator uses only cell age and branch membership",
+    "random": "Uniform random quota respecting one renewal per major branch",
+    "latent": "Unreported outside damage is impossible to detect from identical observations"
+  },
+  "scenarios": [
+    {
+      "scenario": "clean",
+      "cycles": 100,
+      "initial_cells": 365,
+      "total_injected_faults": 0,
+      "total_replacements": 730,
+      "expected_replacements": 730,
+      "total_repaired_faults": 0,
+      "repair_share_of_fault_inventory": 0,
+      "remaining_faults": 0,
+      "peak_fault_backlog": 0,
+      "exact_selection_full_policy_pct": 100,
+      "topk_recall_full_policy_pct": 100,
+      "exact_selection_health_age_proxy_pct": 100,
+      "topk_recall_health_age_proxy_pct": 100,
+      "topk_recall_age_only_pct": 100,
+      "topk_recall_random_pct": 2.86,
+      "topk_recall_missing10_pct": 95.79,
+      "topk_recall_missing25_pct": 87.39,
+      "topk_recall_missing50_pct": 75.61,
+      "band_replacements": {
+        "TACH": 237,
+        "GYRO": 236,
+        "POSI": 236,
+        "RESERVE": 21
+      },
+      "occupancy_final": 365,
+      "final_stability": "STABLE",
+      "final_log_size": 100
+    },
+    {
+      "scenario": "sparse",
+      "cycles": 100,
+      "initial_cells": 365,
+      "total_injected_faults": 50,
+      "total_replacements": 730,
+      "expected_replacements": 730,
+      "total_repaired_faults": 50,
+      "repair_share_of_fault_inventory": 100,
+      "remaining_faults": 0,
+      "peak_fault_backlog": 0,
+      "exact_selection_full_policy_pct": 100,
+      "topk_recall_full_policy_pct": 100,
+      "exact_selection_health_age_proxy_pct": 100,
+      "topk_recall_health_age_proxy_pct": 100,
+      "topk_recall_age_only_pct": 93.34,
+      "topk_recall_random_pct": 1.86,
+      "topk_recall_missing10_pct": 94.54,
+      "topk_recall_missing25_pct": 85.86,
+      "topk_recall_missing50_pct": 75.05,
+      "band_replacements": {
+        "TACH": 238,
+        "GYRO": 240,
+        "POSI": 232,
+        "RESERVE": 20
+      },
+      "occupancy_final": 365,
+      "final_stability": "STABLE",
+      "final_log_size": 150
+    },
+    {
+      "scenario": "bursty",
+      "cycles": 100,
+      "initial_cells": 365,
+      "total_injected_faults": 120,
+      "total_replacements": 730,
+      "expected_replacements": 730,
+      "total_repaired_faults": 116,
+      "repair_share_of_fault_inventory": 74.35897435897436,
+      "remaining_faults": 4,
+      "peak_fault_backlog": 4,
+      "exact_selection_full_policy_pct": 100,
+      "topk_recall_full_policy_pct": 100,
+      "exact_selection_health_age_proxy_pct": 100,
+      "topk_recall_health_age_proxy_pct": 100,
+      "topk_recall_age_only_pct": 85.36,
+      "topk_recall_random_pct": 1.75,
+      "topk_recall_missing10_pct": 93.05,
+      "topk_recall_missing25_pct": 83.84,
+      "topk_recall_missing50_pct": 70.11,
+      "band_replacements": {
+        "TACH": 241,
+        "GYRO": 233,
+        "POSI": 235,
+        "RESERVE": 21
+      },
+      "occupancy_final": 365,
+      "final_stability": "SERVICE_REQUIRED",
+      "final_log_size": 220
+    },
+    {
+      "scenario": "overload",
+      "cycles": 100,
+      "initial_cells": 365,
+      "total_injected_faults": 1080,
+      "total_replacements": 730,
+      "expected_replacements": 730,
+      "total_repaired_faults": 730,
+      "repair_share_of_fault_inventory": 3.1849912739965096,
+      "remaining_faults": 350,
+      "peak_fault_backlog": 351,
+      "exact_selection_full_policy_pct": 100,
+      "topk_recall_full_policy_pct": 100,
+      "exact_selection_health_age_proxy_pct": 100,
+      "topk_recall_health_age_proxy_pct": 100,
+      "topk_recall_age_only_pct": 38.02,
+      "topk_recall_random_pct": 2.16,
+      "topk_recall_missing10_pct": 89.3,
+      "topk_recall_missing25_pct": 77.46,
+      "topk_recall_missing50_pct": 53.27,
+      "band_replacements": {
+        "TACH": 234,
+        "GYRO": 239,
+        "POSI": 235,
+        "RESERVE": 22
+      },
+      "occupancy_final": 365,
+      "final_stability": "SERVICE_REQUIRED",
+      "final_log_size": 1180
+    }
+  ],
+  "performance": {
+    "cycles": 1500,
+    "total_renewals": 10950,
+    "mean_renew_ms": 0.45692,
+    "p50_renew_ms": 0.41307,
+    "p95_renew_ms": 0.70226,
+    "p99_renew_ms": 0.89226,
+    "speed_cycles_per_second": 2188.6,
+    "full_view_1500_event_ms": 12.37,
+    "ledger_entries": 1500,
+    "final_occupancy": 365,
+    "process_rss_mib": 80.51
+  },
+  "latent_information_limit": {
+    "two_worlds_same_observable_state": true,
+    "latent_damage_only_in_external_truth": {
+      "cell": 184,
+      "damaged": true
+    },
+    "identical_deterministic_action": true,
+    "reason": "Hidden information without a sensor, observation, or prior cannot be inferred by the existing Node 184 API."
+  },
+  "caveats": [
+    "Synthetic fault injection, not physical sensor faults",
+    "All cell faults observed by engine via FAULT; no unknown-damage detector",
+    "Full-policy prediction replicates documented deterministic selection logic and is not independently learned",
+    "This is a microbenchmark, not quantum computation, real cell biology, or Planck physics",
+    "In-memory gate and ledger; no persistence across process restart or cryptographic authentication"
+  ]
+}
