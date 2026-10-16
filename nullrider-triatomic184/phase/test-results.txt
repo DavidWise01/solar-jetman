@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: opposite spin frames meet at 0 and 180 degrees
+ok 1 - opposite spin frames meet at 0 and 180 degrees
+  ---
+  duration_ms: 1.885239
+  type: 'test'
+  ...
+# Subtest: access requires Node 184
+ok 2 - access requires Node 184
+  ---
+  duration_ms: 0.243971
+  type: 'test'
+  ...
+# Subtest: only read-only inference operation is allowed
+ok 3 - only read-only inference operation is allowed
+  ---
+  duration_ms: 0.228978
+  type: 'test'
+  ...
+# Subtest: invalid modes and fault truth labels rejected
+ok 4 - invalid modes and fault truth labels rejected
+  ---
+  duration_ms: 0.282788
+  type: 'test'
+  ...
+# Subtest: phase gate blocks samples outside window
+ok 5 - phase gate blocks samples outside window
+  ---
+  duration_ms: 0.299093
+  type: 'test'
+  ...
+# Subtest: mode-specific phase positions cannot be spoofed
+ok 6 - mode-specific phase positions cannot be spoofed
+  ---
+  duration_ms: 1.12134
+  type: 'test'
+  ...
+# Subtest: bad values, nonfinite model and duplicate IDs rejected
+ok 7 - bad values, nonfinite model and duplicate IDs rejected
+  ---
+  duration_ms: 0.200036
+  type: 'test'
+  ...
+# Subtest: same synthetic world reproducible
+ok 8 - same synthetic world reproducible
+  ---
+  duration_ms: 31.727273
+  type: 'test'
+  ...
+# Subtest: two sample counts equal and sealed sensor budgets
+ok 9 - two sample counts equal and sealed sensor budgets
+  ---
+  duration_ms: 11.493947
+  type: 'test'
+  ...
+# Subtest: phase inference never mutates original Node 184 state
+ok 10 - phase inference never mutates original Node 184 state
+  ---
+  duration_ms: 13.84193
+  type: 'test'
+  ...
+# Subtest: null phase signal has no inference advantage
+ok 11 - null phase signal has no inference advantage
+  ---
+  duration_ms: 18.269562
+  type: 'test'
+  ...
+# Subtest: counterrotating assumption violation can hurt rather than help
+ok 12 - counterrotating assumption violation can hurt rather than help
+  ---
+  duration_ms: 3784.660042
+  type: 'test'
+  ...
+# Subtest: same model results are deterministic over repeated seeded evaluation
+ok 13 - same model results are deterministic over repeated seeded evaluation
+  ---
+  duration_ms: 26.058065
+  type: 'test'
+  ...
+# Subtest: all 3 main branches included in capped top-k maintenance selection
+ok 14 - all 3 main branches included in capped top-k maintenance selection
+  ---
+  duration_ms: 12.097189
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3981.792222
