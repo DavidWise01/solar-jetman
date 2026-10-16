@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: four distinct tested scenario labels
+ok 1 - four distinct tested scenario labels
+  ---
+  duration_ms: 4.136525
+  type: 'test'
+  ...
+# Subtest: exactly 400 observed policy steps
+ok 2 - exactly 400 observed policy steps
+  ---
+  duration_ms: 0.474673
+  type: 'test'
+  ...
+# Subtest: 100% known-policy prediction in every scenario
+ok 3 - 100% known-policy prediction in every scenario
+  ---
+  duration_ms: 0.161669
+  type: 'test'
+  ...
+# Subtest: all four scenarios preserve 365 positions
+ok 4 - all four scenarios preserve 365 positions
+  ---
+  duration_ms: 0.09508
+  type: 'test'
+  ...
+# Subtest: 2% discrete renewal quota
+ok 5 - 2% discrete renewal quota
+  ---
+  duration_ms: 1.915885
+  type: 'test'
+  ...
+# Subtest: fault accounting is conserved for each cycle
+ok 6 - fault accounting is conserved for each cycle
+  ---
+  duration_ms: 0.251291
+  type: 'test'
+  ...
+# Subtest: each branch gets renewal and no overfill
+ok 7 - each branch gets renewal and no overfill
+  ---
+  duration_ms: 1.211673
+  type: 'test'
+  ...
+# Subtest: sparse faults fully cleared
+ok 8 - sparse faults fully cleared
+  ---
+  duration_ms: 1.174127
+  type: 'test'
+  ...
+# Subtest: overload queues faults instead of silently declaring stable
+ok 9 - overload queues faults instead of silently declaring stable
+  ---
+  duration_ms: 0.232294
+  type: 'test'
+  ...
+# Subtest: masked observation benchmark is worse than perfect white-box lookahead
+ok 10 - masked observation benchmark is worse than perfect white-box lookahead
+  ---
+  duration_ms: 3.323147
+  type: 'test'
+  ...
+# Subtest: unreported latent fault produces indistinguishable engine choices
+ok 11 - unreported latent fault produces indistinguishable engine choices
+  ---
+  duration_ms: 0.204603
+  type: 'test'
+  ...
+# Subtest: no claims of inferred hidden physical states
+ok 12 - no claims of inferred hidden physical states
+  ---
+  duration_ms: 0.084425
+  type: 'test'
+  ...
+# Subtest: 365 slots: exactly three 118-slot branches + 11 reserves
+ok 13 - 365 slots: exactly three 118-slot branches + 11 reserves
+  ---
+  duration_ms: 5.409114
+  type: 'test'
+  ...
+# Subtest: only Node 184 permits reads and mutations
+ok 14 - only Node 184 permits reads and mutations
+  ---
+  duration_ms: 0.974772
+  type: 'test'
+  ...
+# Subtest: cycles carry exactly 2% average, never fractional cells
+ok 15 - cycles carry exactly 2% average, never fractional cells
+  ---
+  duration_ms: 62.207867
+  type: 'test'
+  ...
+# Subtest: fault through 184 is prioritized, then cleared on next renewal
+ok 16 - fault through 184 is prioritized, then cleared on next renewal
+  ---
+  duration_ms: 1.98692
+  type: 'test'
+  ...
+# Subtest: mutating caller snapshots cannot edit private cells
+ok 17 - mutating caller snapshots cannot edit private cells
+  ---
+  duration_ms: 1.600418
+  type: 'test'
+  ...
+# Subtest: replay blocked; ledger append-only across reseed
+ok 18 - replay blocked; ledger append-only across reseed
+  ---
+  duration_ms: 2.943685
+  type: 'test'
+  ...
+# Subtest: invalid messages and IDs cannot change state
+ok 19 - invalid messages and IDs cannot change state
+  ---
+  duration_ms: 0.605326
+  type: 'test'
+  ...
+# Subtest: independence of core instances
+ok 20 - independence of core instances
+  ---
+  duration_ms: 1.489384
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 157.143521
