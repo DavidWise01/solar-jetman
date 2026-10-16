@@ -1,0 +1,23 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "nullrider_triatomic184/madre-prime/index.html": "1f90a6e2aa85683935ac0d26f1d5b234918113e405837b2f0285d1f48bd6728f",
+    "nullrider_triatomic184/madre-prime/app.mjs": "871d45b7442d3a054026c37d9d9638ccd2ae4d2175af6307596601b4b7a35196",
+    "nullrider_triatomic184/madre-prime/madre.mjs": "a437c2214bdc3abcc6571369b613504cd943e95ba39b2ae1ca1ab337c865515a",
+    "nullrider_triatomic184/madre-prime/madre.test.mjs": "fbfc049c3c16b5b628d54c45efb0302a0c51171fabca0a0fb2d4dc09924bc20a",
+    "nullrider_triatomic184/madre-prime/node-adaptive.mjs": "9b83eb460f530dafb789393553c7604411f21648c0c9ad704ccb19e58b7d2716",
+    "nullrider_triatomic184/madre-prime/node-adaptive.test.mjs": "b1ecfef44cba4025d3f2f5b98c21de8466b16d91736b2d59dea7775698baddcc",
+    "nullrider_triatomic184/madre-prime/README.md": "a3a314f0299250110c10f6ca2780a44c4806774c66ba5a03e92a717b6fe5c583",
+    "nullrider_triatomic184/madre-prime/TEST_REPORT.md": "93a2b08c421cfcec790daadf34c77180109ba8d99e465e9f6eeb514e07bbf4f5",
+    "nullrider_triatomic184/madre-prime/browser_test.py": "c194bcf08dea2fa6198ccfbc581b1709c6160d830069cd0c20903256ecec2750",
+    "nullrider_triatomic184/madre-prime/browser_results.json": "e32d6967619638314979b985a0dd5968ceae6bb26db797f72e1e51515c20530a",
+    "nullrider_triatomic184/madre-prime/node_results.txt": "69fad51045b76fc680100f9ecdeec6482bcbd4d24ebe465080e5f5cce0944b0b",
+    "nullrider_triatomic184/madre-prime/desktop.png": "7f30d35035788ab2c734ff9a7a19e124101880231b831747465e9acad0dff878",
+    "nullrider_triatomic184/madre-prime/mobile.png": "ea262f938301c4a9b0110ab4cbc4e05929213351a23f27781ca90a71c3850aae",
+    "nullrider_triatomic184/engine.mjs": "095f1f79a622820b54c9376bbc287af91b1e90563988fa6b3cc21dfce2a0d9fb",
+    "nullrider_triatomic184/mobius8x8/engine.mjs": "0d11e9c74187f7a019b79f2869234174dd0d23782e95142ceaac34403222a645",
+    "nullrider_triatomic184/infer/infer.mjs": "4c5cbc5addf4eef2990d690d790cdddb49b534b39ac74279ef29b387e0f479e0",
+    "nullrider_triatomic184/phase/phase.mjs": "3a59fa68167befb2572803ba06171dd48b18614d39479e2316188d5c1d502e36",
+    "nullrider_triatomic184/adaptive/adaptive.mjs": "69591e67d4bf21c6dbbb80885790cf917a0d88e25089fa3f0b1a2da42bfee170"
+  }
+}
