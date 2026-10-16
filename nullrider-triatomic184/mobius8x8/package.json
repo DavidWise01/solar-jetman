@@ -1,0 +1,8 @@
+{
+  "name":"nullrider-mobius-x-swap",
+  "version":"1.0.0",
+  "private":true,
+  "type":"module",
+  "scripts":{"test":"node --test engine.test.mjs"},
+  "description":"Node 184: 8x8 reversible X swap and symbolic Mobius/spinor 720 degree closure"
+}
